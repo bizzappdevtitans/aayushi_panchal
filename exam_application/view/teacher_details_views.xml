@@ -6,9 +6,9 @@
             <field name="model">teacher.details</field>
             <field name="arch" type="xml">
                 <tree>
-                        <!-- <field name="teacher_id"/> -->
+                        <field name="teacher_id"/>
                         <field name="ref"/>
-                        <!-- <field name="gender"/> -->
+                        <field name="gender"/>
                         <field name="exam_time"/>
                         <field name="booking_date"/>
 
@@ -26,9 +26,9 @@
                     <sheet>
                         <group>
                             <group>
-                                <!-- <field name="teacher_id"/> -->
+                                <field name="teacher_id"/>
                                 <field name="ref"/>
-                                <!-- <field name="gender"/> -->
+                                <field name="gender"/>
 
                             </group>
                             <group>
@@ -39,7 +39,7 @@
 
                         <notebook>
                             <page string="Class" name="class">
-                                <!-- <field name="gender"/> -->
+                                <field name="gender"/>
                             </page>
                             <page string="Book" name="book">
                                 <group>
@@ -61,7 +61,7 @@
                 <field name="ref"/>
                 <field name="exam_time"/>
                 <field name="booking_date"/>
-                <!-- <field name="gender"/> -->
+                <field name="gender"/>
         </search>
         </field>
     </record>

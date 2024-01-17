@@ -7,7 +7,7 @@
             <field name="name">student.details.tree</field>
             <field name="model">student.details</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree multi_edit="1">
                     <field name="name"/>
                     <field name="gender" widget="radio"/>
                     <field name="date_of_birth" widget="date"/>
@@ -22,7 +22,7 @@
                     <field name="linkdin_id" widget="url"/>
                     <field name="examtype"/>
                     <field name="exam_date" widget="remaining_days"/>
-                    <field name="exam_description" widget="html_frame"/>
+                    <field name="exam_description" widget="html_frame" placeholder="enter a exam description"/>
                     <field name="subjects" widget="many2many_tags"/>
                     <field name="marks" widget="percentpie"/>
                     <field name="clg_fees" widget="monetary"/>
@@ -68,10 +68,10 @@
                         <button name="action_test" string="Object" type="object" class="oe_highlight" help="click button then just print the"/>
 
                         <button name="%(exam_application.action_subject_details_menu)d" string="Action" type="action" class="oe_highlight" help="redirect to the subject menu details page"/>
-
+                        <field name="image" widget="image" class="oe_avatar"/>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="name" default_focus="1"/>
                                 <field name="age"/>
                                 <field name="gender"/>
                                 <field name="date_of_birth"/>
@@ -80,14 +80,13 @@
                                 <field name="mobile_no" widget="phone"/>
                                 <field name="email"/>
                                 <field name="address"  widget="text"/>
-                                <field name="image" widget="image"/>
+
                             </group>
                             <group>
                                 <field name="linkdin_id" widget="url"/>
                                 <field name="ref"/>
                                 <field name="examtype"/>
                                 <field name="exam_date"/>
-                                <field name="exam_description"/>
                                 <field name="clg_fees" widget="monetary"/>
                                 <field name="isbn" widget="popover_widget"/>
                                 <field name="marks"/>
@@ -100,6 +99,10 @@
                         <notebook>
                             <page string="Subject">
                                 <field name="subjects" widget="many2many_tags"/>
+                                <field name="exam_description"
+                                    options="{'collaborative':true,
+                                    'resizable':true,
+                                    'codeview':true}"/>
                             </page>
                         </notebook>
                     </sheet>
@@ -130,7 +133,6 @@
             <field name="address"/>
             <field name="marks"/>
             <field name="active"/>
-            <field name="ref"/>
             <field name="image" widget="image" />
             <!-- add default filter -->
             <filter name="filter_male"
