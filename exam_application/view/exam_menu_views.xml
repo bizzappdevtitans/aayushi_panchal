@@ -21,4 +21,11 @@
         action="action_subject_details_menu"
         />
 
+    <menuitem
+        id="cancel_student_menu"
+        name="cancel student"
+        parent="student_detail_menu"
+        action="action_cancel_student"
+        />
+
 </odoo>

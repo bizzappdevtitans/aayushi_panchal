@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 class StudentDetails(models.Model):
     _name = "student.details"
     _description = "student information"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     # Char fields
 
@@ -15,7 +16,7 @@ class StudentDetails(models.Model):
     mobile_no = fields.Char(string="Mobile no")
     email = fields.Char(string="Email id")
     linkdin_id = fields.Char(string="Linkdin Id")
-    ref=fields.Char(string="Reference")
+    ref = fields.Char(string="Reference")
 
     exam_description = fields.Html(string="Exam Description", sanitize_attributes=False)
     address = fields.Text("Address")
@@ -34,6 +35,7 @@ class StudentDetails(models.Model):
         selection=[
             ("draft", "Draft"),
             ("in_progress", "In Progress"),
+            ("complete", "Complete"),
             ("cancel", "Cancelled"),
             ("done", "Done"),
         ],
@@ -54,9 +56,7 @@ class StudentDetails(models.Model):
     clg_fees = fields.Integer(string="Clg Fees")
     # age=fields.Integer(string="Age") normal filed
     age = fields.Integer(string="Age", compute="_compute_age")
-    subject_count = fields.Integer(
-        string="Subject Count", compute="_compute_subject"
-    )
+    subject_count = fields.Integer(string="Subject Count", compute="_compute_subject")
     marks = fields.Float("Marks in pr")
 
     # Date time fields :-
@@ -71,9 +71,23 @@ class StudentDetails(models.Model):
     # archive the data field
     active = fields.Boolean(string="Active", defult=True)
 
+    teacher = fields.Many2one(comodel_name="teacher.details", string="Teacher Name")
     subjects = fields.Many2many("student.subject.details", string="Subject")
 
-    #Compute filed :-
+    _sql_constraints = [
+        (
+            "unique_student_name_",
+            "UNIQUE(name)",
+            "Student name must be unique, this name is already exist.",
+        ),
+        (
+            "result_uniq",
+            "CHECK (result > 0)",
+            "marks and result must be in postive number.",
+        ),
+    ]
+
+    # Compute filed :-
 
     # compute age from the date of birth
     def _compute_age(self):
@@ -105,6 +119,7 @@ class StudentDetails(models.Model):
             if rec.date_of_birth >= fields.Date.today():
                 raise ValidationError("Enter a date of birth is not correct")
 
+    # perform object button
     def action_test(self):
         print("button clicked!!!!")
 
@@ -118,12 +133,31 @@ class StudentDetails(models.Model):
             "target": "current",
         }
 
+    def action_in_progress(self):
+        for rec in self:
+            rec.state = "in_progress"
+
+    def action_in_complete(self):
+        for rec in self:
+            rec.state = "complete"
+
+    def action_in_cancel(self):
+        for rec in self:
+            rec.state = "cancel"
+
+    def action_in_done(self):
+        for rec in self:
+            rec.state = "done"
+
+    def action_in_draft(self):
+        for rec in self:
+            rec.state = "draft"
+
 
 class StudentSubjectDetails(models.Model):
     _name = "student.subject.details"
     _description = "Information about subject which student give exam"
     _rec_name = "subject_name"
-
 
     students = fields.Many2many("student.details", string="Student")
     subject_name = fields.Selection(

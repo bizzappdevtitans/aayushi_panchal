@@ -20,6 +20,7 @@
                     <field name="document"/>
                     <field name="isbn" widget="popover_widget"/>
                     <field name="linkdin_id" widget="url"/>
+                    <field name="teacher"/>
                     <field name="examtype"/>
                     <field name="exam_date" widget="remaining_days"/>
                     <field name="exam_description" widget="html_frame" placeholder="enter a exam description"/>
@@ -47,65 +48,92 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                            <field name="state" widget="statusbar"
-                                options="{'clickable':1}"/>
+                            <button name="action_in_draft" string="In Draft" type="object" states="cancel" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                            <button name="action_in_progress" string="In Progress" type="object" class="oe_highlight"/>
+                            <button name="action_in_cancel" string="In Cancel" type="object" class="oe_highlight"/>
+                            <button name="action_in_complete" string="In Complete" type="object" states="in_progress" class="oe_highlight"/>
+                            <button name="action_in_done" string="In Done" type="object" states="complete" class="oe_highlight"/>
+
+
                     </header>
                     <sheet>
                         <!-- smart button -->
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_open_subject_details" type="object" class="oe_start_button" icon="fa-address-card">
+                            <button name="action_open_subject_details" type="object" class="oe_start_button" icon="fa-book">
                                 <div class="o_stat_info">
                                     <field name="subject_count" class="o_stat_value"/>
                                     <spam class="o_start_test">subject count</spam>
                                 </div>
                             </button>
                         </div>
+                        <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
                         <div>
                             <h2>
                                 <field name="priority" widget="priority"/>
                             </h2>
+                            <button name="action_test" string="Object" type="object" class="oe_highlight" help="click button then just print the"/>
+                            <button name="%(exam_application.action_subject_details_menu)d" string="Action" type="action" class="oe_highlight" help="redirect to the subject menu details page"/>
                         </div>
-                        <button name="action_test" string="Object" type="object" class="oe_highlight" help="click button then just print the"/>
-
-                        <button name="%(exam_application.action_subject_details_menu)d" string="Action" type="action" class="oe_highlight" help="redirect to the subject menu details page"/>
-                        <field name="image" widget="image" class="oe_avatar"/>
-                        <group>
                             <group>
-                                <field name="name" default_focus="1"/>
-                                <field name="age"/>
-                                <field name="gender"/>
-                                <field name="date_of_birth"/>
-                                <field name="marital"/>
-                                <field name="document"/>
-                                <field name="mobile_no" widget="phone"/>
-                                <field name="email"/>
-                                <field name="address"  widget="text"/>
+                                <h1 class="d-flex">
+                                    <field name="name" placeholder="Student's Name" required="True" default_focus="1"/>
+                                </h1>
+
+                                <group>
+                                    <field name="name" placeholder="Student's Name" required="True" default_focus="1"/>
+                                    <field name="isbn" widget="popover_widget"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </group>
+                                <group>
+                                    <field name="color" widget="color"/>
+                                    <field name="color_2" widget="color_picker"/>
+                                </group>
+
+                                <notebook>
+
+                                    <page name="public" string="Personal Information">
+                                        <group>
+                                            <field name="age"/>
+                                            <field name="gender"/>
+                                            <field name="date_of_birth"/>
+                                            <field name="marital"/>
+                                            <field name="document"/>
+                                            <field name="mobile_no" widget="phone"/>
+                                            <field name="email"/>
+                                            <field name="address"  widget="text"/>
+                                        </group>
+                                    </page>
+
+                                    <page name="public" string="Study Information">
+                                        <group>
+                                            <field name="teacher"/>
+                                            <field name="linkdin_id" widget="url"/>
+                                            <field name="ref"/>
+                                            <field name="examtype"/>
+                                            <field name="exam_date"/>
+                                            <field name="clg_fees" widget="monetary"/>
+                                            <field name="marks"/>
+                                            <field name="result"/>
+                                        </group>
+                                    </page>
+
+                                    <page string="Subject">
+                                        <field name="subjects" widget="many2many_tags"/>
+                                        <field name="exam_description"
+                                            options="{'collaborative':true,
+                                            'resizable':true,
+                                            'codeview':true}"/>
+                                    </page>
+                                </notebook>
 
                             </group>
-                            <group>
-                                <field name="linkdin_id" widget="url"/>
-                                <field name="ref"/>
-                                <field name="examtype"/>
-                                <field name="exam_date"/>
-                                <field name="clg_fees" widget="monetary"/>
-                                <field name="isbn" widget="popover_widget"/>
-                                <field name="marks"/>
-                                <field name="result"/>
-                                <field name="active" widget="boolean_toggle"/>
-                                <field name="color" widget="color"/>
-                                <field name="color_2" widget="color_picker"/>
-                            </group>
-                        </group>
-                        <notebook>
-                            <page string="Subject">
-                                <field name="subjects" widget="many2many_tags"/>
-                                <field name="exam_description"
-                                    options="{'collaborative':true,
-                                    'resizable':true,
-                                    'codeview':true}"/>
-                            </page>
-                        </notebook>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                        <field name="activity_ids"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -120,6 +148,7 @@
             <field name="name" />
             <field name="age"/>
             <field name="gender"/>
+            <field name="teacher"/>
             <field name="date_of_birth" />
             <field name="marital"/>
             <field name="mobile_no"/>
@@ -165,44 +194,61 @@
 
     </record>
 
-<!--subject.details.menu view  -->
+  <record id="student_kanban_view" model="ir.ui.view">
+            <field name="name">student.details.kanban</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="date_of_birth" />
+                    <field name="mobile_no"/>
+                    <field name="image" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
 
-    <record id="view_subject_detail_tree" model="ir.ui.view">
-        <field name="name">subject.info.tree</field>
-        <field name="model">student.subject.details</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="subject_name"/>
-                <field name="students" widget="many2many_tags"/>
-            </tree>
-        </field>
-    </record>
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                           Name : <field name="name"/>
+                                        </li>
+                                        <li>
+                                            Gender : <field name="gender"/>
+                                        </li>
+                                        <li>
+                                            Email : <field name="email" class="o_text_overflow" widget="email"/>
+                                        </li>
+                                        <li>
+                                            Age : <field name="age"/>
+                                        </li>
+                                        <li>
+                                            Contact No : <field name="mobile_no" class="o_force_ltr"/>
+                                        </li>
+                                        <li>
+                                             Photo: <field name="image" widget="image" class="o_kanban_image_fill_right" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                                        </li>
 
-    <record id="view_subject_detail_form" model="ir.ui.view">
-        <field name="name">subject.info.form</field>
-        <field name="model">student.subject.details</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="subject_name" widget="selection"/>
-                    </group>
-                    <notebook>
-                        <page string="Students">
-                            <field name="students" widget="many2many_checkboxes"/>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
-    <record id="action_subject_details_menu" model="ir.actions.act_window">
-        <field name="name">subject.details.menu</field>
-        <field name="res_model">student.subject.details</field>
-        <field name="view_mode">tree,form</field>
-    </record>
 
+    <data>
+        <record id="student_sequence" model="ir.sequence">
+            <field name="name">Student Sequence</field>
+            <field name="code">student</field>
+            <field name="prefix">MP</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
 
 </odoo>
 

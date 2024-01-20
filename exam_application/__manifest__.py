@@ -8,11 +8,13 @@
     "version": "15.0.1.0.0",
     "description": """
 This module contains all the common features of exam Management and all.""",
-    "depends": ["base"],
+    "depends": ["base","mail"],
     "data": [
         "security/ir.model.access.csv",
+        "wizard/cancel_student_views.xml",
         "view/student_details_views.xml",
         "view/teacher_details_views.xml",
+        "view/subject_details_views.xml",
         "view/exam_menu_views.xml",
 
     ],
