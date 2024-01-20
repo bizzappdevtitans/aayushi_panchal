@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<odoo>
+<!-- tree view  -->
+
+ <record id="view_teacher_details_tree" model="ir.ui.view">
+            <field name="name">faculty.details.tree</field>
+            <field name="model">faculty.details</field>
+            <field name="arch" type="xml">
+                <tree>
+                        <field name="faculty_name"/>
+                        <!-- <field name="name_ids"/> -->
+                        <field name="gender"/>
+                        <field name="experience"/>
+                        <field name="mobile_no" widget="phone"/>
+                </tree>
+            </field>
+        </record>
+<!-- from view -->
+ <record id="view_teacher_details_form" model="ir.ui.view">
+            <field name="name">faculty.details.from</field>
+            <field name="model">faculty.details</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
+
+                        <group>
+                            <group>
+                                <field name="faculty_name"/>
+                                <!-- <field name="name_ids"/> -->
+                                <field name="faculty_id"/>
+                                <field name="student_id"/>
+                                <field name="gender"/>
+                                <field name="experience"/>
+                                <field name="mobile_no" widget="phone"/>
+                                <field name="email"/>
+                                <field name="document"/>
+                            </group>
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!-- search view  -->
+    <record id="view_faculty_details_search" model="ir.ui.view" >
+        <field name="model">faculty.details</field>
+        <field name="arch" type="xml">
+        <search>
+                <field name="faculty_name"/>
+                <field name="gender"/>
+                <!-- <field name="name_ids"/> -->
+        </search>
+        </field>
+    </record>
+
+    <record id="action_faculty_details" model="ir.actions.act_window">
+        <field name="name">faculty.details</field>
+        <field name="res_model">faculty.details</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+
+    </record>
+</odoo>
+
+
+
+

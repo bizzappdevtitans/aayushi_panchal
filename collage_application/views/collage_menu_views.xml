@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="collage_menu"
+        name="Collage"/>
+
+    <menuitem
+        id="student_menu"
+        name="Student"
+        parent="collage_menu"/>
+
+    <menuitem
+        id="student_submenu"
+        name="Student Sub"
+        parent="student_menu"/>
+
+    <menuitem id="student_detail_menu"
+        name="Student Details"
+        action="action_student_details"
+        parent="student_submenu"/>
+
+    <menuitem id="faculty_detail_menu"
+        name="Faculty"
+        action="action_faculty_details"
+        parent="collage_menu"/>
+
+    <menuitem id="clg_area_detail_menu"
+        name="Areas"
+        action="action_clg_area"
+        parent="collage_menu"/>
+
+    <menuitem id="admission_detail_menu"
+        name="Admission"
+        action="action_admission"
+        parent="student_submenu"/>
+
+    <menuitem id="placement_detail_menu"
+        name="Placement"
+        action="action_placement_details"
+        parent="student_submenu"/>
+
+    <menuitem id="course_detail_menu"
+        name="Course"
+        action="action_course_details_menu"
+        parent="student_submenu"/>
+
+
+
+</odoo>

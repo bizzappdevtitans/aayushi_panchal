@@ -15,7 +15,7 @@ This module contains all the common features of exam Management and all.""",
         "view/student_details_views.xml",
         "view/teacher_details_views.xml",
         "view/subject_details_views.xml",
-        "view/exam_menu_views.xml",
+        "view/exam_menu.xml",
 
     ],
     "demo": [],
