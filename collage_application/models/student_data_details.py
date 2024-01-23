@@ -4,9 +4,8 @@ from odoo.exceptions import ValidationError
 
 
 class StudentDetails(models.Model):
-    _name = "student.details"
+    _name = "student.data.details"
     _description = "student information"
-    _rec_name="first_name"
 
 
     # Char fields
@@ -78,8 +77,8 @@ class StudentDetails(models.Model):
     # archive the data field
     active = fields.Boolean(string="Active")
 
-    student_class = fields.Many2one("class.details", string="Class name")
-    student_course = fields.Many2one("course.details", string="Course name")
+    # student_class = fields.Many2one("class.details", string="Class name")
+    # student_course = fields.Many2one("course.details", string="Course name")
     # faculty = fields.Many2one(comodel_name="faculty.details", string="Faculty Name")
     # student_ids = fields.one2many(comodel_name="faculty.details", string="Faculty")
     # name_ids = fields.Many2many(comodel_name="faculty.details", string="Faculty")
@@ -87,34 +86,34 @@ class StudentDetails(models.Model):
     # Compute filed :-
 
     # compute age from the date of birth
-    def _compute_age(self):
-        for rec in self:
-            today = date.today()
-            if rec.date_of_birth:
-                rec.age = today.year - rec.date_of_birth.year
-            else:
-                rec.age = 0
+    # def _compute_age(self):
+    #     for rec in self:
+    #         today = date.today()
+    #         if rec.date_of_birth:
+    #             rec.age = today.year - rec.date_of_birth.year
+    #         else:
+    #             rec.age = 0
 
-    def _compute_course(self):
-        for rec in self:
-            total_course = len(self.student_course)
-            self.course_count = total_course
+    # def _compute_course(self):
+    #     for rec in self:
+    #         total_course = len(self.course)
+    #         self.course_count = total_course
 
     # module constrains
-    @api.constrains("full_name", "exam_description")
-    def _check_name(self):
-        for rec in self:
-            if len(rec.full_name) < 3:
-                raise ValidationError("Student name should be at least 3 charcters")
+    # @api.constrains("full_name", "exam_description")
+    # def _check_name(self):
+    #     for rec in self:
+    #         if len(rec.full_name) < 3:
+    #             raise ValidationError("Student name should be at least 3 charcters")
 
-            if rec.full_name == rec.exam_description:
-                raise ValidationError("Student name and Description shoud be different")
+    #         if rec.full_name == rec.exam_description:
+    #             raise ValidationError("Student name and Description shoud be different")
 
-    @api.constrains("date_of_birth")
-    def _check_date_of_birth(self):
-        for rec in self:
-            if rec.date_of_birth >= fields.Date.today():
-                raise ValidationError("Enter a date of birth is not correct")
+    # @api.constrains("date_of_birth")
+    # def _check_date_of_birth(self):
+    #     for rec in self:
+    #         if rec.date_of_birth > fields.Date.today():
+    #             raise ValidationError("Enter a date of birth is not correct")
 
     # @api.depends("result")
     # def _compute_pass(self):
@@ -124,45 +123,46 @@ class StudentDetails(models.Model):
     #         else:
     #             rec.update({"state": "fail"})
 
-    @api.onchange("enrollment_number")
-    def onchange_student_full_name(self):
-        if self.enrollment_number:
-            full_name_id = self.env["admission.details"].search(
-                [("enrollment_num", "=", self.enrollment_number)]
-            )
-            self.full_name=full_name_id.full_name
-            self.first_name=full_name_id.name
-            self.mobile_no=full_name_id.contact_no
-            self.last_name=full_name_id.lastname
-            self.gender=full_name_id.gender
-            self.date_of_birth=full_name_id.date_of_birth
+    # @api.onchange("enrollment_number")
+    # def onchange_student_full_name(self):
+    #     if self.enrollment_number:
+    #         full_name_id = self.env["admission.details"].search(
+    #             [("enrollment_num", "=", self.enrollment_number)]
+    #         )
+    #         self.full_name=full_name_id.full_name
+    #         self.first_name=full_name_id.name
+    #         self.mobile_no=full_name_id.contact_no
+    #         self.last_name=full_name_id.lastname
+    #         self.gender=full_name_id.gender
+    #         self.date_of_birth=full_name_id.date_of_birth
 
-    def action_open_course_details(self):
-        return {
-            "type": "ir.actions.act_window",
-            "name": ("students"),
-            "res_model": "course.details",
-            "view_mode": "tree,form",
-            "domain": [("course_name", "=", self.id)],
-            "target": "current",
-        }
 
-    def action_in_progress(self):
-        for rec in self:
-            rec.state = "in_progress"
+    # def action_open_course_details(self):
+    #     return {
+    #         "type": "ir.actions.act_window",
+    #         "name": ("Course"),
+    #         "res_model": "course.details",
+    #         "view_mode": "tree,form",
+    #         "domain": [("student_id", "=", self.id)],
+    #         "target": "current",
+    #     }
 
-    def action_in_complete(self):
-        for rec in self:
-            rec.state = "complete"
+    # def action_in_progress(self):
+    #     for rec in self:
+    #         rec.state = "in_progress"
 
-    def action_in_cancel(self):
-        for rec in self:
-            rec.state = "cancel"
+    # def action_in_complete(self):
+    #     for rec in self:
+    #         rec.state = "complete"
 
-    def action_in_done(self):
-        for rec in self:
-            rec.state = "done"
+    # def action_in_cancel(self):
+    #     for rec in self:
+    #         rec.state = "cancel"
 
-    def action_in_draft(self):
-        for rec in self:
-            rec.state = "draft"
+    # def action_in_done(self):
+    #     for rec in self:
+    #         rec.state = "done"
+
+    # def action_in_draft(self):
+    #     for rec in self:
+    #         rec.state = "draft"

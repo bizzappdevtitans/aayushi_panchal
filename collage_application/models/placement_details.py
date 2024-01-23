@@ -29,6 +29,7 @@ class TeacherDetails(models.Model):
         required=True,
         default="draft",
     )
+    technology=fields.Char(string="Technology")
 
     _sql_constraints = [
         (

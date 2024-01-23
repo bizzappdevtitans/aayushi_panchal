@@ -1,6 +1,5 @@
 {
     "name": "Collage application",
-    "sequence": 0,
     "summary": "This is for collage application",
     "author": "bizzappdev",
     "website": "https://bizzappdev.com",
@@ -12,11 +11,13 @@ This module contains all the common features of collage Management and all.""",
     "data": [
         "security/ir.model.access.csv",
         "views/student_details_views.xml",
+        "views/student_data_details_views.xml",
         "views/faculty_details_views.xml",
         "views/clg_area_details_views.xml",
         "views/admission_details_views.xml",
         "views/placement_details_views.xml",
         "views/course_details_views.xml",
+        "views/class_details_views.xml",
         "views/collage_menu_views.xml",
 
     ],

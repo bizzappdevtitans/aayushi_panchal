@@ -9,6 +9,7 @@
                 <tree>
                         <field name="faculty_name"/>
                         <!-- <field name="name_ids"/> -->
+                        <field name="course"/>
                         <field name="gender"/>
                         <field name="experience"/>
                         <field name="mobile_no" widget="phone"/>
@@ -27,14 +28,15 @@
                         <group>
                             <group>
                                 <field name="faculty_name"/>
+                                <field name="course"/>
                                 <!-- <field name="name_ids"/> -->
-                                <field name="faculty_id"/>
-                                <field name="student_id"/>
-                                <field name="gender"/>
-                                <field name="experience"/>
-                                <field name="mobile_no" widget="phone"/>
-                                <field name="email"/>
-                                <field name="document"/>
+                                <!-- <field name="faculty_id"/> -->
+                                <!-- <field name="student_id"/> -->
+                                <field name="gender" placeholder="Select your gender"/>
+                                <field name="experience" placeholder="Enter your work experience"/>
+                                <field name="mobile_no" widget="phone" placeholder="Enter your mobile_no"/>
+                                <field name="email" placeholder="Enter your email"/>
+                                <field name="document" placeholder="Upload your document"/>
                             </group>
                         </group>
 
@@ -52,6 +54,19 @@
                 <field name="faculty_name"/>
                 <field name="gender"/>
                 <!-- <field name="name_ids"/> -->
+
+                <filter name="filter_female"
+                    string="Female"
+                    domain="[('gender','=','female')]"/>
+
+                <filter name="filter_5year_up_experience"
+                    string="5 year up experience"
+                    domain="[('experience','&gt;=','5')]"/>
+
+
+                <filter name="group_by_course"
+                    string="By course"
+                    context="{'group_by': 'course'}"/>
         </search>
         </field>
     </record>

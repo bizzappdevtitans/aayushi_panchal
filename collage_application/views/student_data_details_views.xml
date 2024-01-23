@@ -3,50 +3,50 @@
 
 <!-- TREE VIEW  -->
 
- <record id="view_student_details_tree" model="ir.ui.view">
-            <field name="name">student.details.tree</field>
-            <field name="model">student.details</field>
+ <record id="view_student_data_details_tree" model="ir.ui.view">
+            <field name="name">student.data.details.tree</field>
+            <field name="model">student.data.details</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="enrollment_number"/>
                     <field name="first_name"/>
                     <field name="last_name"/>
                     <field name="gender" widget="radio"/>
-                    <field name="date_of_birth" widget="date"/>
+                    <!-- <field name="date_of_birth" widget="date"/> -->
                     <field name="age" widget="integer"/>
                     <field name="marital"/>
                     <field name="mobile_no" widget="phone"/>
                     <field name="address"/>
                     <field name="email"/>
-                    <field name="ref"/>
-                    <field name="isbn" widget="popover_widget"/>
+                    <!-- <field name="ref"/> -->
+                    <!-- <field name="isbn" widget="popover_widget"/> -->
                     <field name="linkdin_id" widget="url"/>
-                    <field name="student_course"/>
+                    <!-- <field name="student_course"/> -->
                     <field name="examtype"/>
                     <field name="exam_date" widget="remaining_days"/>
                     <field name="marks" widget="percentpie"/>
-                    <field name="clg_fees" widget="monetary"/>
+                    <!-- <field name="clg_fees" widget="monetary"/> -->
                     <field name="result" widget="progressbar"/>
                     <field name="active" widget="boolean_toggle"/>
                     <field name="color" widget="color"/>
                     <field name="color_2" widget="color_picker"/>
-                    <field name="state"
+                    <!-- <field name="state"
                         decoration-success="state == 'draft'"
                         decoration-warning="state == 'in_progress'"
                         decoration-info="state == 'cancel'"
-                        decoration-danger="state == 'done'"  widget="badge"/>
+                        decoration-danger="state == 'done'"  widget="badge"/> -->
                 </tree>
             </field>
         </record>
 
 <!-- FORM VIEW-->
 
- <record id="view_student_details_form" model="ir.ui.view">
-            <field name="name">student.details.from</field>
-            <field name="model">student.details</field>
+ <record id="view_student_data_details_form" model="ir.ui.view">
+            <field name="name">student.data.details.from</field>
+            <field name="model">student.data.details</field>
             <field name="arch" type="xml">
                 <form>
-                    <header>
+                    <!-- <header>
                             <button name="action_in_draft" string="In Draft" type="object" states="cancel" class="oe_highlight"/>
                             <field name="state" widget="statusbar"/>
                             <button name="action_in_progress" string="In Progress" type="object" class="oe_highlight"/>
@@ -55,17 +55,17 @@
                             <button name="action_in_done" string="In Done" type="object" states="complete" class="oe_highlight"/>
 
 
-                    </header>
+                    </header> -->
                     <sheet>
                         <!-- smart button -->
-                        <div class="oe_button_box" name="button_box">
+                        <!-- <div class="oe_button_box" name="button_box">
                             <button name="action_open_course_details" type="object" class="oe_start_button" icon="fa-book">
                                 <div class="o_stat_info">
                                     <field name="course_count" class="o_stat_value"/>
                                     <spam class="o_start_test">Course count</spam>
                                 </div>
                             </button>
-                        </div>
+                        </div> -->
                         <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
 
                             <group>
@@ -106,7 +106,7 @@
                                     <page name="public" string="Study Information">
                                         <group>
                                             <!-- <field name="faculty"/> -->
-                                            <field name="student_course" placeholder="Select your course"/>
+                                            <!-- <field name="student_course" placeholder="Select your course"/> -->
                                             <!-- <field name="name_ids"/> -->
                                             <field name="linkdin_id" widget="url"/>
                                             <field name="ref"/>
@@ -125,102 +125,11 @@
             </field>
         </record>
 
-<!-- SEARCH VIEW-->
 
-    <record id="view_student_details_search" model="ir.ui.view">
-        <field name="model">student.data.details</field>
-        <field name="arch" type="xml">
-        <search>
 
-            <field name="first_name"/>
-            <field name="last_name"/>
-            <field name="age"/>
-            <field name="gender"/>
-            <field name="date_of_birth" />
-            <field name="marital"/>
-            <field name="mobile_no"/>
-            <field name="email"/>
-            <field name="examtype"/>
-            <field name="isbn" />
-            <field name="result" />
-            <field name="exam_date"/>
-            <field name="exam_description"/>
-            <field name="address"/>
-            <field name="marks"/>
-            <field name="active"/>
-            <field name="image" widget="image" />
-            <!-- add default filter -->
-            <filter name="filter_male"
-                    string="Male"
-                    domain="[('gender','=','male')]"/>
-            <!-- use the separator for the perfrom and operation ,when we not use septatoe that perfrom or operation that providing the total of that filed -->
-            <separator/>
-            <filter name="filter_female"
-                    string="Female"
-                    domain="[('gender','=','female')]"/>
-            <filter name="filter_examtype"
-                    string="examtype"
-                    domain="[('examtype','=','ielts')]"/>
-         <!--    <filter name="filter_not_adults"
-                    string="Not adults"
-                    domain="[('age','&lt;=','18')]"/> -->
-
-            <filter name="group_by_marital_status"
-                    string="By Marital status"
-                    context="{'group_by': 'marital'}"/>
-        </search>
-        </field>
-    </record>
-
-  <record id="student_kanban_view" model="ir.ui.view">
-            <field name="name">student.details.kanban</field>
-            <field name="model">student.details</field>
-            <field name="arch" type="xml">
-                <kanban>
-                    <field name="first_name"/>
-                    <field name="last_name"/>
-                    <field name="age"/>
-                    <field name="gender"/>
-                    <field name="date_of_birth" />
-                    <field name="mobile_no"/>
-                    <field name="image" widget="image"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_global_click">
-
-                                <div class="oe_kanban_details">
-                                    <ul>
-                                        <li>
-                                           Name : <field name="first_name"/>
-                                        </li>
-                                        <li>
-                                            Gender : <field name="gender"/>
-                                        </li>
-                                        <li>
-                                            Email : <field name="email" class="o_text_overflow" widget="email"/>
-                                        </li>
-                                        <li>
-                                            Age : <field name="age"/>
-                                        </li>
-                                        <li>
-                                            Contact No : <field name="mobile_no" class="o_force_ltr"/>
-                                        </li>
-                                        <li>
-                                             Photo: <field name="image" widget="image" class="o_kanban_image_fill_right" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
-
-    <record id="action_student_details" model="ir.actions.act_window">
-        <field name="name">student.details</field>
-        <field name="res_model">student.details</field>
+    <record id="action_student_data_details" model="ir.actions.act_window">
+        <field name="name">student.data.detail.tree.view</field>
+        <field name="res_model">student.data.details</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form,kanban,graph</field>
 

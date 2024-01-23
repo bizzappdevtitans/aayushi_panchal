@@ -27,14 +27,15 @@
 
                         <group>
                             <group>
-                                <field name="student_name"/>
-                                <field name="gender"/>
-                                <field name="mobile_no"/>
-                                <field name="email"/>
-                                <field name="document"/>
-                                <field name="company_name"/>
-                                <field name="select_by"/>
-                                <field name="training_period"/>
+                                <field name="student_name" placeholder="Select your student name"/>
+                                <field name="gender" placeholder="Select your gender"/>
+                                <field name="mobile_no" placeholder="Enter your 10 digit mobile no"/>
+                                <field name="email" placeholder="Enter your email"/>
+                                <field name="document" placeholder="Upload your document"/>
+                                <field name="company_name" placeholder="Enter your company name"/>
+                                <field name="select_by" placeholder="Select your placement mode"/>
+                                <field name="technology" placeholder="Enter your technology"/>
+                                <field name="training_period" placeholder="Enter your training period"/>
                             </group>
                         </group>
                     </sheet>

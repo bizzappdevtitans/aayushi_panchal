@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class TeacherDetails(models.Model):
     _name = "faculty.details"
     _description = "faculty information"
+    _rec_name = "faculty_name"
 
     faculty_name = fields.Char(string="Faculty name")
     mobile_no = fields.Char(string="Mobile No")
@@ -13,15 +14,15 @@ class TeacherDetails(models.Model):
     experience = fields.Char("experience")
     document = fields.Binary("Upload your document")
 
-    faculty_id = fields.Many2one(comodel_name="student.details", string="Student name")
-    student_id = fields.One2many("student.details", "faculty", "StudentName")
+    course = fields.One2many("course.details", "faculty_course", "Course given")
+    # faculty_id = fields.Many2one(comodel_name="student.details", string="Student name")
+    # student_id = fields.One2many("student.details", "faculty", "StudentName")
     # name_ids = fields.Many2many(comodel_name="student", string="Students")
 
     _sql_constraints = [
         (
             "unique_faculty_name_",
             "unique (faculty_name)",
-            "Faculty name must be unique, this name is already exist."
+            "Faculty name must be unique, this name is already exist.",
         )
     ]
-

@@ -6,4 +6,5 @@ collage_application.access_clg_area,access_clg_area,collage_application.model_cl
 collage_application.access_library,access_library,collage_application.model_library,base.group_user,1,1,1,1
 collage_application.access_placement_details,access_placement_details,collage_application.model_placement_details,base.group_user,1,1,1,1
 collage_application.access_course_details,access_course_details,collage_application.model_course_details,base.group_user,1,1,1,1
-
+collage_application.access_class_details,access_class_details,collage_application.model_class_details,base.group_user,1,1,1,1
+collage_application.access_student_data_details,access_student_data_details,collage_application.model_student_data_details,base.group_user,1,1,1,1

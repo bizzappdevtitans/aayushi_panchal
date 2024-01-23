@@ -8,10 +8,11 @@
       <field name="arch" type="xml">
 
          <tree>
-            <field name="name" decoration-primary="1" decoration-bf="1" />
-            <field name="lastname" decoration-info="1" decoration-bf="1" />
-            <field name="contact_no" decoration-bf="1" />
-            <field name="course" />
+            <field name="enrollment_num"/>
+            <field name="name"/>
+            <field name="lastname"/>
+            <field name="contact_no"/>
+            <field name="course"/>
             <field name="pr_result" />
 
          </tree>
@@ -29,11 +30,15 @@
             <sheet>
                 <widget name="web_ribbon" title="Student Admission Open" bg_color="bg-success"/>
                <group>
-               <field name="name" placeholder="Enter your name "/>
-               <field name="lastname" placeholder="Enter your lastname"/>
-               <field name="contact_no" placeholder="Enter your contact no"/>
-               <field name="course" placeholder="Enter your course"/>
-               <field name="pr_result" placeholder="Enter yout previous course/std"/>
+                   <field name="enrollment_num"/>
+                   <field name="full_name" placeholder="Enter your full name"/>
+                   <field name="name" placeholder="Enter your name "/>
+                   <field name="lastname" placeholder="Enter your lastname"/>
+                   <field name="gender"/>
+                   <field name="date_of_birth"/>
+                   <field name="contact_no" placeholder="Enter your contact no"/>
+                   <field name="course_name" placeholder="Select your course"/>
+                   <field name="pr_result" placeholder="Enter yout previous course/std" widget="percentpie"/>
                </group>
             </sheet>
          </form>

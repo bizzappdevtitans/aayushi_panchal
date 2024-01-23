@@ -7,6 +7,8 @@
             <tree>
                 <field name="course_name"/>
                 <field name="students"/>
+                <field name="faculty_course"/>
+                <field name="year"/>
             </tree>
         </field>
     </record>
@@ -19,11 +21,12 @@
                 <sheet>
                     <group>
                         <field name="course_name" widget="selection"/>
-                        <field name="students"/>
+                        <field name="faculty_course" placeholder="Select your faculty name"/>
+                        <field name="year" placeholder="Enter your course year"/>
                     </group>
                     <notebook>
                         <page string="Students">
-                            <field name="students"/>
+                            <field name="students" placeholder="Enter your student details"/>
                         </page>
                     </notebook>
                 </sheet>

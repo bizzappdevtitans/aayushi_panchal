@@ -14,6 +14,18 @@
         name="Student Sub"
         parent="student_menu"/>
 
+
+    <menuitem id="student_data_detail_menu"
+        name="Student Data Details"
+        action="action_student_data_details"
+        parent="student_submenu"/>
+
+    <menuitem
+        id="area_submenu"
+        name="Collage Areas"
+        action="action_student_data_details"
+        parent="collage_menu"/>
+
     <menuitem id="student_detail_menu"
         name="Student Details"
         action="action_student_details"
@@ -43,6 +55,14 @@
         name="Course"
         action="action_course_details_menu"
         parent="student_submenu"/>
+
+    <menuitem id="class_detail_menu"
+        name="Class"
+        action="action_class_details_menu"
+        parent="clg_area_detail_menu"/>
+
+
+
 
 
 
