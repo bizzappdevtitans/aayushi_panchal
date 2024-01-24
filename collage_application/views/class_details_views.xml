@@ -17,8 +17,24 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <!-- smart button -->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_count_student_of_class" type="object" class="oe_start_button" icon="fa-users">
+                                <div class="o_stat_info">
+                                    <field name="student_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">student count</spam>
+                                </div>
+                            </button>
+                            <button name="action_count_faculty_of_class" type="object" class="oe_start_button" icon="fa-user">
+                                <div class="o_stat_info">
+                                    <field name="faculty_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">faculty count</spam>
+                                </div>
+                            </button>
+                        </div>
+
                     <group>
-                        <field name="class_name" widget="selection"/>
+                        <field name="class_name"/>
                         <field name="class_faculty" placeholder="Select your faculty name"/>
                         <field name="strenth_of_class" placeholder="Enter your class year"/>
                     </group>

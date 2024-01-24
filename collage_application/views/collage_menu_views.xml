@@ -23,7 +23,7 @@
     <menuitem
         id="area_submenu"
         name="Collage Areas"
-        action="action_student_data_details"
+        action="action_clg_area"
         parent="collage_menu"/>
 
     <menuitem id="student_detail_menu"
@@ -38,7 +38,7 @@
 
     <menuitem id="clg_area_detail_menu"
         name="Areas"
-        action="action_clg_area"
+        action="action_class_details_menu"
         parent="collage_menu"/>
 
     <menuitem id="admission_detail_menu"
@@ -61,7 +61,10 @@
         action="action_class_details_menu"
         parent="clg_area_detail_menu"/>
 
-
+    <menuitem id="college_information_menu_action"
+          name="College Information"
+          action="college_information_action"
+          parent="collage_menu"/>
 
 
 

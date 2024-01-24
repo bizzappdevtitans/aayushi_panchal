@@ -6,3 +6,4 @@ from . import placement_details
 from . import course_details
 from . import class_details
 from . import student_data_details
+from . import collage_information

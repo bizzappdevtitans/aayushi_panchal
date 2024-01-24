@@ -13,7 +13,7 @@
             <field name="lastname"/>
             <field name="contact_no"/>
             <field name="course"/>
-            <field name="pr_result" />
+            <field name="pr_result" widget="percentpie"/>
 
          </tree>
       </field>
@@ -38,7 +38,7 @@
                    <field name="date_of_birth"/>
                    <field name="contact_no" placeholder="Enter your contact no"/>
                    <field name="course_name" placeholder="Select your course"/>
-                   <field name="pr_result" placeholder="Enter yout previous course/std" widget="percentpie"/>
+                   <field name="pr_result" placeholder="Enter yout previous course/std"/>
                </group>
             </sheet>
          </form>

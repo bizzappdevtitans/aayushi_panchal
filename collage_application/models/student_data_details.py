@@ -3,10 +3,11 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
+
 class StudentDetails(models.Model):
     _name = "student.data.details"
     _description = "student information"
-
+    _rec_name="first_name"
 
     # Char fields
     full_name = fields.Char(string="Full Name")

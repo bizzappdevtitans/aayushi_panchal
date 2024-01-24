@@ -23,6 +23,16 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <!-- smart button -->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_course_details" type="object" class="oe_start_button" icon="fa-book">
+                                <div class="o_stat_info">
+                                    <field name="course_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">Faculty course count</spam>
+                                </div>
+                            </button>
+                        </div>
+
                         <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
 
                         <group>
@@ -37,6 +47,7 @@
                                 <field name="mobile_no" widget="phone" placeholder="Enter your mobile_no"/>
                                 <field name="email" placeholder="Enter your email"/>
                                 <field name="document" placeholder="Upload your document"/>
+                                <field name="faculty_class"/>
                             </group>
                         </group>
 
