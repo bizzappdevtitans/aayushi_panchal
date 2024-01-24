@@ -143,7 +143,7 @@ class StudentDetails(models.Model):
             "name": ("students"),
             "res_model": "course.details",
             "view_mode": "tree,form",
-            "domain": [("course_name", "=", self.id)],
+            "domain": [("students", "=", self.id)],
             "target": "current",
         }
 
