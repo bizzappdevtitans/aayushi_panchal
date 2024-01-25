@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<odoo>
-<!-- tree view  -->
+    <odoo>
+    <!-- tree view  -->
 
- <record id="view_teacher_details_tree" model="ir.ui.view">
+       <record id="view_teacher_details_tree" model="ir.ui.view">
             <field name="name">faculty.details.tree</field>
             <field name="model">faculty.details</field>
             <field name="arch" type="xml">
@@ -17,7 +17,7 @@
             </field>
         </record>
 <!-- from view -->
- <record id="view_teacher_details_form" model="ir.ui.view">
+    <record id="view_teacher_details_form" model="ir.ui.view">
             <field name="name">faculty.details.from</field>
             <field name="model">faculty.details</field>
             <field name="arch" type="xml">
@@ -39,9 +39,6 @@
                             <group>
                                 <field name="faculty_name"/>
                                 <field name="course"/>
-                                <!-- <field name="name_ids"/> -->
-                                <!-- <field name="faculty_id"/> -->
-                                <!-- <field name="student_id"/> -->
                                 <field name="gender" placeholder="Select your gender"/>
                                 <field name="experience" placeholder="Enter your work experience"/>
                                 <field name="mobile_no" widget="phone" placeholder="Enter your mobile_no"/>

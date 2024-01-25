@@ -35,10 +35,6 @@ class ClassDetails(models.Model):
             "target": "current",
         }
 
-
-    # def _compute_faculty(self):
-    #     for rec in self:
-
     def _compute_faculty(self):
         for rec in self:
             rec.faculty_count = self.env['faculty.details'].search_count(

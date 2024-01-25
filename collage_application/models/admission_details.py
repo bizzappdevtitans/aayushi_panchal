@@ -5,10 +5,10 @@ from odoo.exceptions import ValidationError
 class Admission(models.Model):
     _name = "admission.details"
     _description = "admission details"
-    _rec_name="full_name"
+    _rec_name = "full_name"
 
-    enrollment_num=fields.Integer(string="Enrollment number", store=True)
-    full_name=fields.Char(string="Full Name")
+    enrollment_num = fields.Integer(string="Enrollment number", store=True)
+    full_name = fields.Char(string="Full Name")
     name = fields.Char(string="Name", copy="False")
     lastname = fields.Char(string="Last Name")
     gender = fields.Selection([("male", "Male"), ("female", "Female")], string="Gender")
@@ -33,4 +33,3 @@ class Admission(models.Model):
             "You can't enter less than 10 digits and more than 10 digits",
         )
     ]
-

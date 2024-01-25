@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 
 
 
-class StudentDetails(models.Model):
+class StudentDataDetails(models.Model):
     _name = "student.data.details"
     _description = "student information"
     _rec_name="first_name"

@@ -127,50 +127,6 @@
 
 <!-- SEARCH VIEW-->
 
-    <record id="view_student_details_search" model="ir.ui.view">
-        <field name="model">student.data.details</field>
-        <field name="arch" type="xml">
-        <search>
-
-            <field name="first_name"/>
-            <field name="last_name"/>
-            <field name="age"/>
-            <field name="gender"/>
-            <field name="date_of_birth" />
-            <field name="marital"/>
-            <field name="mobile_no"/>
-            <field name="email"/>
-            <field name="examtype"/>
-            <field name="isbn" />
-            <field name="result" />
-            <field name="exam_date"/>
-            <field name="exam_description"/>
-            <field name="address"/>
-            <field name="marks"/>
-            <field name="active"/>
-            <field name="image" widget="image" />
-            <!-- add default filter -->
-            <filter name="filter_male"
-                    string="Male"
-                    domain="[('gender','=','male')]"/>
-            <!-- use the separator for the perfrom and operation ,when we not use septatoe that perfrom or operation that providing the total of that filed -->
-            <separator/>
-            <filter name="filter_female"
-                    string="Female"
-                    domain="[('gender','=','female')]"/>
-            <filter name="filter_examtype"
-                    string="examtype"
-                    domain="[('examtype','=','ielts')]"/>
-         <!--    <filter name="filter_not_adults"
-                    string="Not adults"
-                    domain="[('age','&lt;=','18')]"/> -->
-
-            <filter name="group_by_marital_status"
-                    string="By Marital status"
-                    context="{'group_by': 'marital'}"/>
-        </search>
-        </field>
-    </record>
 
   <record id="student_kanban_view" model="ir.ui.view">
             <field name="name">student.details.kanban</field>

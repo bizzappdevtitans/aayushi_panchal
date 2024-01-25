@@ -39,7 +39,6 @@
         <field name="name">College Information</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">college.information</field>
-        <field name="view_id" eval="False"/>
     </record>
 
 
