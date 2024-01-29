@@ -126,9 +126,50 @@
         </record>
 
 <!-- SEARCH VIEW-->
+    <record id="view_student_details_search" model="ir.ui.view">
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+        <search>
+
+            <field name="first_name"/>
+            <field name="age"/>
+            <field name="gender"/>
+            <field name="date_of_birth" />
+            <field name="marital"/>
+            <field name="mobile_no"/>
+            <field name="email"/>
+            <field name="document"/>
+            <field name="examtype"/>
+            <field name="result" />
+            <field name="address"/>
+            <field name="marks"/>
+            <field name="active"/>
+            <field name="image" widget="image" />
+            <!-- add default filter -->
+            <filter name="filter_male"
+                    string="Male"
+                    domain="[('gender','=','male')]"/>
+            <!-- use the separator for the perfrom and operation ,when we not use septatoe that perfrom or operation that providing the total of that filed -->
+            <separator/>
+            <filter name="filter_female"
+                    string="Female"
+                    domain="[('gender','=','female')]"/>
+            <filter name="filter_examtype"
+                    string="examtype"
+                    domain="[('examtype','=','externalexam')]"/>
+         <!--    <filter name="filter_not_adults"
+                    string="Not adults"
+                    domain="[('age','&lt;=','18')]"/> -->
+
+            <filter name="group_by_marital_status"
+                    string="By Marital status"
+                    context="{'group_by': 'marital'}"/>
+        </search>
+        </field>
+    </record>
 
 
-  <record id="student_kanban_view" model="ir.ui.view">
+    <record id="student_kanban_view" model="ir.ui.view">
             <field name="name">student.details.kanban</field>
             <field name="model">student.details</field>
             <field name="arch" type="xml">
@@ -172,7 +213,7 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+    </record>
 
     <record id="action_student_details" model="ir.actions.act_window">
         <field name="name">student.details</field>

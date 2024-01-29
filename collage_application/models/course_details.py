@@ -9,6 +9,7 @@ class StudentSubjectDetails(models.Model):
     _rec_name="course_name"
 
     faculty_course = fields.Many2one("faculty.details", "Course faculty")
+    course_class = fields.Many2one("class.details","Class course")
     students = fields.One2many("student.details", "student_course", "Students")
     course_name = fields.Selection(
         [

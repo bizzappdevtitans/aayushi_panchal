@@ -6,6 +6,7 @@ class CollegeLocation(models.Model):
     _description = "College information"
     _rec_name = "country_id"
 
+    college_name=fields.Char(string="Collage name")
     country_id = fields.Char(string="Country")
     description = fields.Text(string="Description")
     image = fields.Image(string="Image")

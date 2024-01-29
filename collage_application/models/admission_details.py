@@ -26,6 +26,10 @@ class Admission(models.Model):
         "Select course",
     )
 
+    # perform object button
+    def action_test(self):
+        print("hello student, welcome to collage campus!!!!")
+
     _sql_constraints = [
         (
             "name_uniq",

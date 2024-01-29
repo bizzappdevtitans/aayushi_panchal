@@ -22,6 +22,7 @@
                     <group>
                         <field name="course_name" widget="selection"/>
                         <field name="faculty_course" placeholder="Select your faculty name"/>
+                        <field name="course_class"/>
                         <field name="year" placeholder="Enter your course year"/>
                     </group>
                     <notebook>
@@ -31,6 +32,22 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="view_course_details_search" model="ir.ui.view" >
+        <field name="model">course.details</field>
+        <field name="arch" type="xml">
+        <search>
+
+                <filter name="filter_2year_course"
+                    string="2 year course"
+                    domain="[('year','&lt;=','2')]"/>
+
+                <filter name="group_by_course"
+                    string="By course"
+                    context="{'group_by':'course_name'}"/>
+        </search>
         </field>
     </record>
 

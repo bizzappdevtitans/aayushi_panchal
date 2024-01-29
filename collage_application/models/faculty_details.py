@@ -17,9 +17,6 @@ class TeacherDetails(models.Model):
     course_count = fields.Integer(string="Course Count", compute="_compute_course")
     faculty_class =fields.Many2one("class.details",string="Class facility" )
     course = fields.One2many("course.details", "faculty_course", "Course given")
-    # faculty_id = fields.Many2one(comodel_name="student.details", string="Student name")
-    # student_id = fields.One2many("student.details", "faculty", "StudentName")
-    # name_ids = fields.Many2many(comodel_name="student", string="Students")
 
     _sql_constraints = [
         (
@@ -35,11 +32,23 @@ class TeacherDetails(models.Model):
             self.course_count = total_course
 
     def action_open_course_details(self):
-        return {
-            "type": "ir.actions.act_window",
-            "name": ("faculty_course"),
-            "res_model": "course.details",
-            "view_mode": "tree,form",
-            "domain": [("faculty_course", "=", self.id)],
-            "target": "current",
-        }
+        if self.course_count > 1:
+            return{
+
+                "type": "ir.actions.act_window",
+                "name": ("faculty_course"),
+                "res_model": "course.details",
+                "view_mode": "tree,form",
+                "domain": [("faculty_course", "=", self.id)],
+                "target": "current",
+            }
+        else:
+            return{
+
+                "type": "ir.actions.act_window",
+                "name": ("faculty_course"),
+                "res_model": "course.details",
+                "view_mode": "form",
+                "domain": [("faculty_course", "=", self.id)],
+                "target": "current",
+            }

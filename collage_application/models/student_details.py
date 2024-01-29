@@ -80,9 +80,8 @@ class StudentDetails(models.Model):
 
     student_class = fields.Many2one("class.details", string="Class name")
     student_course = fields.Many2one("course.details", string="Course name")
-    # faculty = fields.Many2one(comodel_name="faculty.details", string="Faculty Name")
-    # student_ids = fields.one2many(comodel_name="faculty.details", string="Faculty")
-    # name_ids = fields.Many2many(comodel_name="faculty.details", string="Faculty")
+
+
 
     # Compute filed :-
 
@@ -116,13 +115,6 @@ class StudentDetails(models.Model):
             if rec.date_of_birth >= fields.Date.today():
                 raise ValidationError("Enter a date of birth is not correct")
 
-    # @api.depends("result")
-    # def _compute_pass(self):
-    #     for rec in self:
-    #         if rec.result > 45:
-    #             rec.update({"state": "pass"})
-    #         else:
-    #             rec.update({"state": "fail"})
 
     @api.onchange("enrollment_number")
     def onchange_student_full_name(self):
@@ -138,14 +130,24 @@ class StudentDetails(models.Model):
             self.date_of_birth=full_name_id.date_of_birth
 
     def action_open_course_details(self):
-        return {
-            "type": "ir.actions.act_window",
-            "name": ("students"),
-            "res_model": "course.details",
-            "view_mode": "tree,form",
-            "domain": [("students", "=", self.id)],
-            "target": "current",
-        }
+        if self.student_count > 1:
+            return{
+                "type": "ir.actions.act_window",
+                "name": ("students"),
+                "res_model": "course.details",
+                "view_mode": "tree,form",
+                "domain": [("students", "=", self.id)],
+                "target": "current",
+            }
+        else:
+            return{
+                "type": "ir.actions.act_window",
+                "name": ("students"),
+                "res_model": "course.details",
+                "view_mode": "form",
+                "domain": [("students", "=", self.id)],
+                "target": "current",
+            }
 
     def action_in_progress(self):
         for rec in self:

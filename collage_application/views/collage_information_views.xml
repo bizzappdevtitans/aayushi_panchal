@@ -8,6 +8,7 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="college_name"/>
                         <field name="country_id"/>
                         <field name="description"/>
                         <field name="image"/>
@@ -29,7 +30,9 @@
         <field name="model">college.information</field>
         <field name="arch" type="xml">
             <tree string="College Information">
+                <field name="college_name"/>
                 <field name="country_id"/>
+                <field name="location"/>
             </tree>
         </field>
     </record>

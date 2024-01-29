@@ -66,15 +66,11 @@
                 <filter name="filter_female"
                     string="Female"
                     domain="[('gender','=','female')]"/>
-
+                <separator/>
                 <filter name="filter_5year_up_experience"
                     string="5 year up experience"
                     domain="[('experience','&gt;=','5')]"/>
 
-
-                <filter name="group_by_course"
-                    string="By course"
-                    context="{'group_by': 'course'}"/>
         </search>
         </field>
     </record>
