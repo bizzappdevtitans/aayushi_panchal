@@ -9,6 +9,12 @@
         name="Student"
         parent="collage_menu"/>
 
+     <menuitem
+        id="event_menu"
+        name="Event"
+        action="event_details_action"
+        parent="collage_menu"/>
+
     <menuitem
         id="student_submenu"
         name="Student Sub"
@@ -41,6 +47,16 @@
         action="action_class_details_menu"
         parent="collage_menu"/>
 
+    <menuitem id="library_menu"
+        name="Library"
+        action="action_library"
+        parent="clg_area_detail_menu"/>
+
+    <menuitem id="class_detail_menu"
+        name="Class"
+        action="action_class_details_menu"
+        parent="clg_area_detail_menu"/>
+
     <menuitem id="admission_detail_menu"
         name="Admission"
         action="action_admission"
@@ -56,10 +72,7 @@
         action="action_course_details_menu"
         parent="student_submenu"/>
 
-    <menuitem id="class_detail_menu"
-        name="Class"
-        action="action_class_details_menu"
-        parent="clg_area_detail_menu"/>
+
 
     <menuitem id="college_information_menu_action"
           name="College Information"

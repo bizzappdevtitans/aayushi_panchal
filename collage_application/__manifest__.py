@@ -19,6 +19,8 @@ This module contains all the common features of collage Management and all.""",
         "views/course_details_views.xml",
         "views/class_details_views.xml",
         "views/collage_information_views.xml",
+        "views/event_details_views.xml",
+        "views/library_details_views.xml",
         "views/collage_menu_views.xml",
 
     ],

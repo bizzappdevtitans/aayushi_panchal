@@ -48,7 +48,7 @@
         <field name="target">inline</field>
     </record>
  -->
-    <record id="library_form_view" model="ir.ui.view">
+<!--     <record id="library_form_view" model="ir.ui.view">
       <field name="name">library.form</field>
       <field name="model">library</field>
       <field name="arch" type="xml">
@@ -70,7 +70,7 @@
         <field name="res_model">library</field>
         <field name="view_mode">form</field>
         <field name="target">inline</field>
-    </record>
+    </record> -->
 
 
    <!--  <record id="sports_form_view" model="ir.ui.view">

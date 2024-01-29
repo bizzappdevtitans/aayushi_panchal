@@ -70,7 +70,10 @@
                 <filter name="filter_5year_up_experience"
                     string="5 year up experience"
                     domain="[('experience','&gt;=','5')]"/>
-
+            <searchpanel>
+                <field name="faculty_class" enable_counters="1"/>
+                <!-- <field name="course" enable_counters="1"/> -->
+            </searchpanel>
         </search>
         </field>
     </record>

@@ -164,6 +164,10 @@
             <filter name="group_by_marital_status"
                     string="By Marital status"
                     context="{'group_by': 'marital'}"/>
+            <searchpanel>
+                <field name="student_class" enable_counters="1"/>
+                <field name="student_course" enable_counters="1"/>
+            </searchpanel>
         </search>
         </field>
     </record>

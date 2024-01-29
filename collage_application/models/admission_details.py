@@ -26,6 +26,7 @@ class Admission(models.Model):
         "Select course",
     )
 
+
     # perform object button
     def action_test(self):
         print("hello student, welcome to collage campus!!!!")
@@ -35,5 +36,10 @@ class Admission(models.Model):
             "name_uniq",
             "check(Length(contact_no)=10)",
             "You can't enter less than 10 digits and more than 10 digits",
+        ),
+        (
+            "unique_full_name_",
+            "unique (full_name)",
+            "Student name must be unique, this name is already exist.",
         )
     ]

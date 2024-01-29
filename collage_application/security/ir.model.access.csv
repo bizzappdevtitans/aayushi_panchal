@@ -9,4 +9,5 @@ collage_application.access_course_details,access_course_details,collage_applicat
 collage_application.access_class_details,access_class_details,collage_application.model_class_details,base.group_user,1,1,1,1
 collage_application.access_student_data_details,access_student_data_details,collage_application.model_student_data_details,base.group_user,1,1,1,1
 collage_application.access_college_information,access_college_information,collage_application.model_college_information,base.group_user,1,1,1,1
+collage_application.access_event_details,access_event_details,collage_application.model_event_details,base.group_user,1,1,1,1
 

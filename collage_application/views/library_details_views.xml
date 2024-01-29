@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="library_form_view" model="ir.ui.view">
+      <field name="name">library.form</field>
+      <field name="model">library</field>
+      <field name="arch" type="xml">
+         <form >
+            <sheet>
+                <h1> Our Library</h1>
+               <group>
+                    <field name="library_name"/>
+                    <field name="student_name"/>
+                    <field name="library_date"/>
+                    <field name="library_image"/>
+               </group>
+            </sheet>
+         </form>
+      </field>
+    </record>
+
+    <record id="action_library" model="ir.actions.act_window">
+        <field name="name">library</field>
+        <field name="res_model">library</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+</odoo>

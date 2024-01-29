@@ -41,6 +41,7 @@
     <record id="college_information_action" model="ir.actions.act_window">
         <field name="name">College Information</field>
         <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
         <field name="res_model">college.information</field>
     </record>
 

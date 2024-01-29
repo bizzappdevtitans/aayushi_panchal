@@ -19,13 +19,7 @@ class ClgArea(models.Model):
 #     lab_date = fields.Datetime("Sport_date_time")
 
 
-class Library(models.Model):
-    _name = "library"
-    _description = "library"
 
-    library_name = fields.Char(string="Smart class name")
-    student_name =fields.Char(string="Student Name")
-    library_date = fields.Datetime("Sport_date_time")
 
 
 # class Sports(models.Model):

@@ -25,8 +25,7 @@ class ClassDetails(models.Model):
             self.student_count = total_student
 
     def action_count_student_of_class(self):
-        return
-        {
+        return{
             "type": "ir.actions.act_window",
             "name": ("students_class"),
             "res_model": "student.details",

@@ -100,6 +100,14 @@ class StudentDetails(models.Model):
             self.course_count = total_course
 
     # module constrains
+    _sql_constraints = [
+        (
+            "unique_full_name_",
+            "unique (full_name)",
+            "Student name must be unique, this name is already exist.",
+        )
+    ]
+
     @api.constrains("full_name", "exam_description")
     def _check_name(self):
         for rec in self:
