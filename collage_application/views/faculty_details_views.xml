@@ -7,9 +7,10 @@
             <field name="model">faculty.details</field>
             <field name="arch" type="xml">
                 <tree>
+                        <field name="sequence" widget="handle" />
+                        <field name="faculty_no" string="Faculty_No" readonly="1" decoration-bf="1"/>
                         <field name="faculty_name"/>
-                        <!-- <field name="name_ids"/> -->
-                        <field name="course"/>
+                        <field name="course" widget="on2many_list"/>
                         <field name="gender"/>
                         <field name="experience"/>
                         <field name="mobile_no" widget="phone"/>
@@ -33,12 +34,18 @@
                             </button>
                         </div>
 
+
                         <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
 
+                        <div class="oe_title">
+                            <h1>
+                                <field name="faculty_no" readonly="1"/>
+                            </h1>
+                        </div>
                         <group>
                             <group>
                                 <field name="faculty_name"/>
-                                <field name="course"/>
+                                <field name="course" widget="on2many_list"/>
                                 <field name="gender" placeholder="Select your gender"/>
                                 <field name="experience" placeholder="Enter your work experience"/>
                                 <field name="mobile_no" widget="phone" placeholder="Enter your mobile_no"/>
@@ -47,8 +54,6 @@
                                 <field name="faculty_class"/>
                             </group>
                         </group>
-
-
                     </sheet>
                 </form>
             </field>
@@ -61,7 +66,6 @@
         <search>
                 <field name="faculty_name"/>
                 <field name="gender"/>
-                <!-- <field name="name_ids"/> -->
 
                 <filter name="filter_female"
                     string="Female"
@@ -72,17 +76,58 @@
                     domain="[('experience','&gt;=','5')]"/>
             <searchpanel>
                 <field name="faculty_class" enable_counters="1"/>
-                <!-- <field name="course" enable_counters="1"/> -->
             </searchpanel>
         </search>
         </field>
+    </record>
+<!-- KANBAN VIEW -->
+    <record id="partner_kanban_view" model="ir.ui.view">
+            <field name="name">faculty.details.kanban</field>
+            <field name="model">faculty.details</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <!-- <field name="id"/>
+                    <field name="display_name"/>
+                    <field name="email"/>
+                    <field name="mobile"/> -->
+                    <field name="sequence" widget="handle" invisible="1"/>
+                    <field name="faculty_no"/>
+                    <field name="faculty_name"/>
+                    <field name="gender"/>
+                    <field name="faculty_class" />
+                    <field name="mobile_no"/>
+                    <field name="image" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <!-- <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('faculty.details', 'image',record.id.raw_value)" alt="Image" height="80px" width="60px"/>
+                                </div> -->
+                                <div>
+                                    Photo: <field name="image" widget="image" class="o_kanban_image_fill_right" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="faculty_no"/>
+                                    </strong>
+                                    <ul>
+                                        <li>Faculty Name :<field name="faculty_name"/></li>
+                                        <li>Gender :<field name="gender"/></li>
+                                        <li>Faculty Class :<field name="faculty_class" /></li>
+                                        <li>Contac No :<field name="mobile_no"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
     </record>
 
     <record id="action_faculty_details" model="ir.actions.act_window">
         <field name="name">faculty.details</field>
         <field name="res_model">faculty.details</field>
         <field name="view_mode">tree,form,kanban,graph</field>
-
     </record>
 </odoo>
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_canteen_tree_view" model="ir.ui.view">
+        <field name="name">canteen.details.tree</field>
+        <field name="model">canteen.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="item"/>
+                <field name="price"/>
+                <field name="quntity"/>
+                <field name="image"/>
+                <field name="table_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="canteen_form_view" model="ir.ui.view">
+      <field name="name">canteen.form</field>
+      <field name="model">canteen.details</field>
+      <field name="arch" type="xml">
+         <form >
+            <sheet>
+                <h1> Our Canteen</h1>
+               <group>
+                    <field name="item"/>
+                    <field name="price"/>
+                    <field name="quntity"/>
+                    <field name="image"/>
+                    <field name="table_no"/>
+               </group>
+            </sheet>
+         </form>
+      </field>
+    </record>
+
+    <record id="action_canteen" model="ir.actions.act_window">
+        <field name="name">canteen</field>
+        <field name="res_model">canteen.details</field>
+        <field name="view_mode">form,tree</field>
+        <field name="target">inline</field>
+    </record>
+
+</odoo>

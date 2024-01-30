@@ -46,10 +46,4 @@ class ClgArea(models.Model):
 #     lecturer_name =fields.Char(string="Lecturer Name")
 
 
-# class CanteenMenu(models.Model):
-#     _name = "canteen_menu"
-#     _description = "canteen_menu"
 
-#     item = fields.Char("Item name")
-#     price = fields.Float("Price")
-#     image = fields.Image("Photo")

@@ -33,7 +33,7 @@ class Admission(models.Model):
 
     _sql_constraints = [
         (
-            "name_uniq",
+            "contact_no_len",
             "check(Length(contact_no)=10)",
             "You can't enter less than 10 digits and more than 10 digits",
         ),

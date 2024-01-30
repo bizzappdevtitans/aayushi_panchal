@@ -8,6 +8,7 @@
             <field name="model">student.details</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="student_no" string="Student_No" readonly="1" decoration-bf="1"/>
                     <field name="enrollment_number"/>
                     <field name="first_name"/>
                     <field name="last_name"/>
@@ -53,8 +54,6 @@
                             <button name="action_in_cancel" string="In Cancel" type="object" class="oe_highlight"/>
                             <button name="action_in_complete" string="In Complete" type="object" states="in_progress" class="oe_highlight"/>
                             <button name="action_in_done" string="In Done" type="object" states="complete" class="oe_highlight"/>
-
-
                     </header>
                     <sheet>
                         <!-- smart button -->
@@ -67,7 +66,11 @@
                             </button>
                         </div>
                         <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
-
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="student_no" readonly="1"/>
+                                </h1>
+                            </div>
                             <group>
                                 <h3 class="d-flex">
                                     <field name="full_name" placeholder="Student's FullName" required="True" />

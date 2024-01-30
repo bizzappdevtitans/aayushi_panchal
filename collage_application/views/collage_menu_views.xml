@@ -52,6 +52,11 @@
         action="action_library"
         parent="clg_area_detail_menu"/>
 
+    <menuitem id="canteen_menu"
+        name="Canteen"
+        action="action_canteen"
+        parent="clg_area_detail_menu"/>
+
     <menuitem id="class_detail_menu"
         name="Class"
         action="action_class_details_menu"

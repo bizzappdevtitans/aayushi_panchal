@@ -5,6 +5,7 @@
         <field name="model">class.details</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="room_number"/>
                 <field name="class_name"/>
                 <field name="class_faculty"/>
             </tree>

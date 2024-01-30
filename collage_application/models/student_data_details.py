@@ -86,6 +86,19 @@ class StudentDataDetails(models.Model):
 
     # Compute filed :-
 
+
+    # _sql_constraints = [
+    #     (
+    #         "unique_full_name_",
+    #         "unique (full_name)",
+    #         "Student name must be unique, this name is already exist.",
+    #     )
+    #     (
+    #         "contact_no_len",
+    #         "check(Length(contact_no)=10)",
+    #         "You can't enter less than 10 digits and more than 10 digits",
+    #     )
+    # ]
     # compute age from the date of birth
     # def _compute_age(self):
     #     for rec in self:
