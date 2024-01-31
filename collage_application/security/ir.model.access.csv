@@ -3,7 +3,7 @@ collage_application.access_admission_details,access_admission_details,collage_ap
 collage_application.access_faculty_details,access_faculty_details,collage_application.model_faculty_details,base.group_user,1,1,1,1
 collage_application.access_student_details,access_student_details,collage_application.model_student_details,base.group_user,1,1,1,1
 collage_application.access_clg_area,access_clg_area,collage_application.model_clg_area,base.group_user,1,1,1,1
-collage_application.access_library,access_library,collage_application.model_library,base.group_user,1,1,1,1
+collage_application.access_library_details,access_library_details,collage_application.model_library_details,base.group_user,1,1,1,1
 collage_application.access_placement_details,access_placement_details,collage_application.model_placement_details,base.group_user,1,1,1,1
 collage_application.access_course_details,access_course_details,collage_application.model_course_details,base.group_user,1,1,1,1
 collage_application.access_class_details,access_class_details,collage_application.model_class_details,base.group_user,1,1,1,1

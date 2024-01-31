@@ -1,4 +1,4 @@
-from odoo import fields, api, models
+from odoo import fields, api, models, _
 from odoo.exceptions import ValidationError
 
 
@@ -25,6 +25,14 @@ class Admission(models.Model):
         ],
         "Select course",
     )
+    admisiion_no = fields.Char(
+        string="Admisiion Reference",
+        required=True,
+        readonly=True,
+        copy=False,
+        index=True,
+        default=lambda self: _("New"),
+    )
 
 
     # perform object button
@@ -43,3 +51,13 @@ class Admission(models.Model):
             "Student name must be unique, this name is already exist.",
         )
     ]
+
+    @api.model
+    def create(self, vals):
+        if vals.get("admisiion_no", "New") == "New":
+            vals["admisiion_no"] = (
+                self.env["ir.sequence"].next_by_code("admission.details") or "New"
+            )
+
+        result = super(Admission, self).create(vals)
+        return result

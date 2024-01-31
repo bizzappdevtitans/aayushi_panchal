@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, _,api
 
 
 class ClassDetails(models.Model):
@@ -18,6 +18,24 @@ class ClassDetails(models.Model):
     faculty_count=fields.Integer(
         string="total faculty of class", compute="_compute_faculty"
     )
+    class_no = fields.Char(
+        string="Class Reference",
+        required=True,
+        readonly=True,
+        copy=False,
+        index=True,
+        default=lambda self: _("New"),
+    )
+
+    @api.model
+    def create(self, vals):
+        if vals.get("class_no", "New") == "New":
+            vals["class_no"] = (
+                self.env["ir.sequence"].next_by_code("class.details") or "New"
+            )
+
+        result = super(ClassDetails, self).create(vals)
+        return result
 
     def _compute_student(self):
         for rec in self:

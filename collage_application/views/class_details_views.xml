@@ -5,6 +5,7 @@
         <field name="model">class.details</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="class_no"/>
                 <field name="room_number"/>
                 <field name="class_name"/>
                 <field name="class_faculty"/>
@@ -35,6 +36,7 @@
                         </div>
 
                     <group>
+                        <field name="class_no"/>
                         <field name="class_name"/>
                         <field name="class_faculty" placeholder="Select your faculty name"/>
                         <field name="strenth_of_class" placeholder="Enter your class year"/>

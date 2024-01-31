@@ -10,7 +10,8 @@
                         <field name="sequence" widget="handle" />
                         <field name="faculty_no" string="Faculty_No" readonly="1" decoration-bf="1"/>
                         <field name="faculty_name"/>
-                        <field name="course" widget="on2many_list"/>
+                        <field name="faculty_short_name"/>
+                        <field name="course"/>
                         <field name="gender"/>
                         <field name="experience"/>
                         <field name="mobile_no" widget="phone"/>
@@ -45,7 +46,8 @@
                         <group>
                             <group>
                                 <field name="faculty_name"/>
-                                <field name="course" widget="on2many_list"/>
+                                <field name="faculty_short_name"/>
+                                <field name="course"/>
                                 <field name="gender" placeholder="Select your gender"/>
                                 <field name="experience" placeholder="Enter your work experience"/>
                                 <field name="mobile_no" widget="phone" placeholder="Enter your mobile_no"/>
@@ -86,10 +88,6 @@
             <field name="model">faculty.details</field>
             <field name="arch" type="xml">
                 <kanban>
-                    <!-- <field name="id"/>
-                    <field name="display_name"/>
-                    <field name="email"/>
-                    <field name="mobile"/> -->
                     <field name="sequence" widget="handle" invisible="1"/>
                     <field name="faculty_no"/>
                     <field name="faculty_name"/>

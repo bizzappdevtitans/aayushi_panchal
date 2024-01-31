@@ -6,16 +6,8 @@ class FacultyDetails(models.Model):
     _description = "faculty information"
     _rec_name = "faculty_name"
 
-    faculty_no = fields.Char(
-        string="Order Reference",
-        required=True,
-        copy=False,
-        readonly=True,
-        index=True,
-        default=lambda self: _("New"),
-    )
-
     faculty_name = fields.Char(string="Faculty name")
+    faculty_short_name = fields.Char(string="Faculty ShortName")
     mobile_no = fields.Char(string="Mobile No")
     gender = fields.Selection([("male", "Male"), ("female", "Female")], string="Gender")
     email = fields.Char(string="Email id")
@@ -27,6 +19,48 @@ class FacultyDetails(models.Model):
     course_count = fields.Integer(string="Course Count", compute="_compute_course")
     faculty_class = fields.Many2one("class.details", string="Class facility")
     course = fields.One2many("course.details", "faculty_course", "Course given")
+    faculty_no = fields.Char(
+        string="Order Reference",
+        required=True,
+        copy=False,
+        readonly=True,
+        index=True,
+        default=lambda self: _("New"),
+    )
+
+    """Returns the unique sequence number whenever new form is created"""
+    @api.model
+    def create(self, vals):
+        if vals.get("faculty_no", "New") == "New":
+            vals["faculty_no"] = (
+                self.env["ir.sequence"].next_by_code("faculty.details")
+            )
+            vals["email"] = "faculty.123@email.com"
+            vals["mobile_no"] = 1234567890
+        result = super(FacultyDetails, self).create(vals)
+        return result
+
+    # def unlink(self,vals):
+    #     for rec in self:
+    #         vals = course
+    #         if rec.course in vals:
+    #             raise UserError('You cannot Delete this record')
+    #     return super(FacultyDetails, self).unlink(vals)
+
+    # def unlink(self):
+    #     return super(FacultyDetails, self).unlink()
+
+    def write(self, vals):
+        if 'faculty_name' in vals and vals['faculty_name']:
+            vals['faculty_name'] = vals['faculty_name'].capitalize()
+        return super(FacultyDetails, self).write(vals)
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            result.append((rec.id, '%s - %s' % (rec.faculty_short_name,rec.faculty_name)))
+        return result
+
 
     _sql_constraints = [
         (
@@ -42,15 +76,6 @@ class FacultyDetails(models.Model):
             if len(record.mobile_no) != 10:
                 raise ValidationError("Please add 10 digit phone number")
 
-    @api.model
-    def create(self, vals):
-        if vals.get("faculty_no", "New") == "New":
-            vals["faculty_no"] = (
-                self.env["ir.sequence"].next_by_code("faculty.details") or "New"
-            )
-
-        result = super(FacultyDetails, self).create(vals)
-        return result
 
     def _compute_course(self):
         for rec in self:

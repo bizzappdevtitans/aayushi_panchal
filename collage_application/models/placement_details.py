@@ -1,9 +1,10 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
-class TeacherDetails(models.Model):
+class PlacementDetails(models.Model):
     _name = "placement.details"
     _description = "placement information"
+    _rec_name="student_name"
 
     student_name = fields.Char(string="Student name")
     gender = fields.Selection([("male", "Male"), ("female", "Female")], string="Gender")
@@ -30,6 +31,24 @@ class TeacherDetails(models.Model):
         default="draft",
     )
     technology=fields.Char(string="Technology")
+    placement_no = fields.Char(
+        string="Course Reference",
+        required=True,
+        readonly=True,
+        copy=False,
+        index=True,
+        default=lambda self: _("New"),
+    )
+
+    @api.model
+    def create(self, vals):
+        if vals.get("placement_no", "New") == "New":
+            vals["placement_no"] = (
+                self.env["ir.sequence"].next_by_code("placement.details") or "New"
+            )
+
+        result = super(PlacementDetails, self).create(vals)
+        return result
 
     _sql_constraints = [
         (

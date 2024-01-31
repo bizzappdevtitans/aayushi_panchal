@@ -8,6 +8,7 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="event_no"/>
                         <field name="event_name"/>
                         <field name="event_faculty"/>
                         <field name="event_time"/>
@@ -24,7 +25,8 @@
         <field name="name">event.details.view.tree</field>
         <field name="model">event.details</field>
         <field name="arch" type="xml">
-            <tree string="College Information">
+            <tree>
+                <field name="event_no"/>
                 <field name="event_name"/>
                 <field name="event_faculty" widget="many2many_tags"/>
                 <field name="event_time"/>

@@ -10,3 +10,5 @@ class CanteenMenu(models.Model):
     quntity=fields.Integer("Quantity")
     image = fields.Image("Photo")
     table_no=fields.Integer("Table No")
+
+

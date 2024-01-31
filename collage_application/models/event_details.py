@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
 
 
 class EventDetails(models.Model):
@@ -25,3 +25,22 @@ class EventDetails(models.Model):
         "Select event type",
     )
     event_date = fields.Datetime(string="Event Date")
+
+    event_no = fields.Char(
+        string="Course Reference",
+        required=True,
+        readonly=True,
+        copy=False,
+        index=True,
+        default=lambda self: _("New"),
+    )
+
+    @api.model
+    def create(self, vals):
+        if vals.get("event_no", "New") == "New":
+            vals["event_no"] = (
+                self.env["ir.sequence"].next_by_code("event.details") or "New"
+            )
+
+        result = super(EventDetails, self).create(vals)
+        return result

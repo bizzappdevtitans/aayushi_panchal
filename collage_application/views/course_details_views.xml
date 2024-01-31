@@ -5,6 +5,7 @@
         <field name="model">course.details</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="course_no"/>
                 <field name="course_name"/>
                 <field name="students"/>
                 <field name="faculty_course"/>
@@ -20,6 +21,7 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="course_no"/>
                         <field name="course_name" widget="selection"/>
                         <field name="faculty_course" placeholder="Select your faculty name"/>
                         <field name="course_class"/>
@@ -36,6 +38,7 @@
     </record>
 
     <record id="view_course_details_search" model="ir.ui.view" >
+        <field name="name">course.details.search</field>
         <field name="model">course.details</field>
         <field name="arch" type="xml">
         <search>

@@ -1,5 +1,5 @@
 from datetime import date
-from odoo import fields, models
+from odoo import fields, models,api
 
 
 class ClgArea(models.Model):
