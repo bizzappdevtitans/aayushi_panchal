@@ -14,5 +14,5 @@ class LibraryDetails(models.Model):
     @api.model
     def create(self,vals):
         vals = {'library_name': 'gls collage library'}
-        res = super(LibraryDetails, self).create(vals)
-        return res
+        result = super(LibraryDetails, self).create(vals)
+        return result

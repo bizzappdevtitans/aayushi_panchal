@@ -148,7 +148,7 @@ class StudentDetails(models.Model):
             self.date_of_birth = full_name_id.date_of_birth
 
     def action_open_course_details(self):
-        if self.student_count > 1:
+        if self.course_count > 1:
             return {
                 "type": "ir.actions.act_window",
                 "name": ("students"),

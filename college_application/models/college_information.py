@@ -1,9 +1,9 @@
 from odoo import fields, models
 
 
-class CollegeLocation(models.Model):
+class CollegeInformation(models.Model):
     _name = "college.information"
-    _description = "College information"
+    _description = "college information"
     _rec_name = "country_id"
 
     college_name=fields.Char(string="Collage name")

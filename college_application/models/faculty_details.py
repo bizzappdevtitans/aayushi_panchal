@@ -1,4 +1,5 @@
-from odoo import models, fields, _,api
+from odoo import models, fields, _, api
+from odoo.exceptions import UserError
 
 
 class FacultyDetails(models.Model):
@@ -15,7 +16,7 @@ class FacultyDetails(models.Model):
     experience = fields.Char("experience")
     document = fields.Binary("Upload your document")
 
-    sequence = fields.Integer(string = "Sequence")
+    sequence = fields.Integer(string="Sequence")
     course_count = fields.Integer(string="Course Count", compute="_compute_course")
     faculty_class = fields.Many2one("class.details", string="Class facility")
     course = fields.One2many("course.details", "faculty_course", "Course given")
@@ -29,38 +30,49 @@ class FacultyDetails(models.Model):
     )
 
     """Returns the unique sequence number whenever new form is created"""
+
     @api.model
     def create(self, vals):
         if vals.get("faculty_no", "New") == "New":
-            vals["faculty_no"] = (
-                self.env["ir.sequence"].next_by_code("faculty.details")
-            )
+            vals["faculty_no"] = self.env["ir.sequence"].next_by_code("faculty.details")
             vals["email"] = "faculty.123@email.com"
             vals["mobile_no"] = 1234567890
         result = super(FacultyDetails, self).create(vals)
         return result
 
-    # def unlink(self,vals):
-    #     for rec in self:
-    #         vals = course
-    #         if rec.course in vals:
-    #             raise UserError('You cannot Delete this record')
-    #     return super(FacultyDetails, self).unlink(vals)
-
-    # def unlink(self):
-    #     return super(FacultyDetails, self).unlink()
+    def unlink(self):
+        if self.course:
+            raise UserError("You cannot Delete this record")
+        return super(FacultyDetails, self).unlink()
 
     def write(self, vals):
-        if 'faculty_name' in vals and vals['faculty_name']:
-            vals['faculty_name'] = vals['faculty_name'].capitalize()
+        if "faculty_name" in vals and vals["faculty_name"]:
+            vals["faculty_name"] = vals["faculty_name"].capitalize()
+        if "faculty_short_name" in vals and vals["faculty_short_name"]:
+            vals["faculty_short_name"] = vals["faculty_short_name"].upper()
         return super(FacultyDetails, self).write(vals)
 
     def name_get(self):
         result = []
         for rec in self:
-            result.append((rec.id, '%s - %s' % (rec.faculty_short_name,rec.faculty_name)))
+            result.append(
+                (rec.id, "%s - %s" % (rec.faculty_short_name, rec.faculty_name))
+            )
         return result
 
+    @api.model
+    def _name_search(
+        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+    ):
+        args = list(args or [])
+        if name:
+            args += [
+                "|",
+                "|",
+                ("faculty_class", operator, name),
+                ("course", operator, name),
+            ]
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
 
     _sql_constraints = [
         (
@@ -75,7 +87,6 @@ class FacultyDetails(models.Model):
         for record in self:
             if len(record.mobile_no) != 10:
                 raise ValidationError("Please add 10 digit phone number")
-
 
     def _compute_course(self):
         for rec in self:
@@ -101,4 +112,3 @@ class FacultyDetails(models.Model):
                 "domain": [("faculty_course", "=", self.id)],
                 "target": "current",
             }
-

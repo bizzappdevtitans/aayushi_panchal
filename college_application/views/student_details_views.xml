@@ -64,6 +64,12 @@
                                     <spam class="o_start_test">Course count</spam>
                                 </div>
                             </button>
+                           <!--  <button name="action_open_student_details" type="object" class="oe_start_button" icon="fa-users">
+                                <div class="o_stat_info">
+                                    <field name="student_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">Student count</spam>
+                                </div>
+                            </button> -->
                         </div>
                         <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
                             <div class="oe_title">

@@ -6,7 +6,7 @@ from . import placement_details
 from . import course_details
 from . import class_details
 from . import student_data_details
-from . import collage_information
+from . import college_information
 from . import event_details
 from . import library_details
 from . import canteen_details

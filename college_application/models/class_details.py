@@ -1,5 +1,5 @@
 from odoo import models, fields, _,api
-
+from odoo.exceptions import UserError
 
 class ClassDetails(models.Model):
     _name = "class.details"
@@ -51,6 +51,11 @@ class ClassDetails(models.Model):
             "domain": [("student_class", "=", self.id)],
             "target": "current",
         }
+
+    def unlink(self):
+        if (self.class_faculty or self.course):
+            raise UserError("You cannot Delete this class")
+        return super(ClassDetails, self).unlink()
 
     def _compute_faculty(self):
         for rec in self:
