@@ -33,7 +33,7 @@
                        <field name="name" placeholder="Enter your name"/>
                        <field name="lastname" placeholder="Enter your lastname"/>
                        <field name="gender"/>
-                       <field name="date_of_birth"/>
+                       <field name="date_of_birth" widget="date"/>
                        <field name="contact_no" placeholder="Enter your contact no"/>
                        <field name="course_name" placeholder="Select your course"/>
                        <field name="pr_result" placeholder="Enter yout pr% previous course/std"/>

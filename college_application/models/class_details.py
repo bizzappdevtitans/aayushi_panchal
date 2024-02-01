@@ -82,4 +82,11 @@ class ClassDetails(models.Model):
                 "target": "current",
             }
 
+    def name_get(self):
+        result = []
+        for rec in self:
+            result.append(
+                (rec.id, "%s - %s" % (rec.room_number, rec.course))
+            )
+        return result
 

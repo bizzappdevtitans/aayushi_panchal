@@ -68,11 +68,25 @@ class FacultyDetails(models.Model):
         if name:
             args += [
                 "|",
-                "|",
                 ("faculty_class", operator, name),
                 ("course", operator, name),
             ]
-        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+        return self._search(domain+args, limit=limit, access_rights_uid=name_get_uid)
+
+    # @api.model
+    # def search_read(
+    #     self, model, fields=False, offset=0, limit=False, domain=None, order=None
+    # ):
+    #     domain = [
+    #         "|",
+    #         "|",
+    #         ("faculty_class", operator, name),
+    #         ("course", operator, name),
+    #     ]
+    #     res = super(FacultyDetails, self).search_read(
+    #         domain,fields,offset,limit,order
+    #     )
+    #     return res
 
     _sql_constraints = [
         (
