@@ -63,7 +63,7 @@
     </record>
 
     <record id="action_placement_details" model="ir.actions.act_window">
-        <field name="name">placement.details</field>
+        <field name="name">Placement Details</field>
         <field name="res_model">placement.details</field>
         <field name="view_mode">tree,form,kanban,graph</field>
 

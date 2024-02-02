@@ -27,7 +27,8 @@
                     <sheet>
                         <!-- smart button -->
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_open_course_details" type="object" class="oe_start_button" icon="fa-book">
+                            <button name="action_open_course_details" type="object" class="oe_start_button" icon="fa-book"
+                                attrs="{'invisible': [('course_count', '=', 0)]}">
                                 <div class="o_stat_info">
                                     <field name="course_count" class="o_stat_value"/>
                                     <spam class="o_start_test">Faculty course count</spam>
@@ -123,7 +124,7 @@
     </record>
 
     <record id="action_faculty_details" model="ir.actions.act_window">
-        <field name="name">faculty.details</field>
+        <field name="name">Faculty Details</field>
         <field name="res_model">faculty.details</field>
         <field name="view_mode">tree,form,kanban,graph</field>
     </record>

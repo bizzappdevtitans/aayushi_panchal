@@ -39,7 +39,7 @@
 
 
     <record id="college_information_action" model="ir.actions.act_window">
-        <field name="name">college.details.menu</field>
+        <field name="name">College Details</field>
         <field name="res_model">college.information</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>

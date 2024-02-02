@@ -62,16 +62,22 @@ class FacultyDetails(models.Model):
 
     @api.model
     def _name_search(
-        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+        self,
+        name="",
+        args=None,
+        operator="ilike",
+        limit=100,
+        name_get_uid=None,
     ):
-        args = list(args or [])
+        args = args or []
+        domain = []
         if name:
-            args += [
+            domain = [
                 "|",
                 ("faculty_class", operator, name),
-                ("course", operator, name),
+                ("faculty_name", operator, name),
             ]
-        return self._search(domain+args, limit=limit, access_rights_uid=name_get_uid)
+        return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
 
     # @api.model
     # def search_read(

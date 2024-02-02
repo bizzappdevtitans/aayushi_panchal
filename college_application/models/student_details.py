@@ -1,3 +1,4 @@
+import base64
 from datetime import date
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -60,7 +61,7 @@ class StudentDetails(models.Model):
     result = fields.Integer(string="Result")
     color_2 = fields.Integer(string=" Fav Color picker")
     clg_fees = fields.Integer(string="Clg Fees")
-    age = fields.Integer(string="Age")
+    age = fields.Integer(string="Age",compute="_compute_age")
     course_count = fields.Integer(string="Course Count", compute="_compute_course")
     marks = fields.Float("Marks in pr")
 
@@ -71,6 +72,7 @@ class StudentDetails(models.Model):
 
     # Other fields :-
 
+    # image = fields.Binary("Profile photo",default='_get_default_image')
     image = fields.Binary("Profile photo")
     document = fields.Binary("Upload your document")
 
@@ -88,7 +90,6 @@ class StudentDetails(models.Model):
         index=True,
         default=lambda self: _("New"),
     )
-
 
     # Compute filed :-
 
@@ -186,3 +187,25 @@ class StudentDetails(models.Model):
     def action_in_draft(self):
         for rec in self:
             rec.state = "draft"
+
+    # @api.model
+    # def write(self, vals, contect=None):
+    #     if (self.image == False):
+    #         get_imae = "/college_application/static/description/noimage.jpg"
+    #         vals['image'] = get_image
+    #     return super(StudentDetails, self).write(vals)
+
+    # def _get_default_image(self):
+    #     image_path = modules.get_module_resource('student.details', '/college_application/static/description/noimage.jpg', 'noimage.jpg')
+    #     return tools.image_resize_image_big(base64.b64encode(open('/college_application/static/description/noimage.jpg', 'rb').read()))
+
+    # def _set_image(self):
+    #     for record in self:
+    #         path = (
+    #             record.get_image_path()
+    #         )  #: image path in odoo folder structure, example: /odoo/images/<file>
+    #         if not record.image:
+    #             with open(
+    #                 "/college_application/static/description/noimage.jpg", "rb"
+    #             ) as img:
+    #                 record.image = base64.b64encode(img.read())

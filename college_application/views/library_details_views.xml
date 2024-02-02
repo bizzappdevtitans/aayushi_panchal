@@ -32,7 +32,7 @@
     </record>
 
     <record id="action_library" model="ir.actions.act_window">
-        <field name="name">library.details</field>
+        <field name="name">Library Details</field>
         <field name="res_model">library.details</field>
         <field name="view_mode">tree,form</field>
     </record>

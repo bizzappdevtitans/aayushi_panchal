@@ -15,8 +15,8 @@ class ClassDetails(models.Model):
     student_count = fields.Integer(
         string="total student of class", compute="_compute_student"
     )
-    faculty_count=fields.Integer(
-        string="total faculty of class", compute="_compute_faculty"
+    course_count=fields.Integer(
+        string="total course of class", compute="_compute_course"
     )
     class_no = fields.Char(
         string="Class Reference",
@@ -57,28 +57,28 @@ class ClassDetails(models.Model):
             raise UserError("You cannot Delete this class")
         return super(ClassDetails, self).unlink()
 
-    def _compute_faculty(self):
+    def _compute_course(self):
         for rec in self:
-            rec.faculty_count = self.env['faculty.details'].search_count(
-                [('faculty_class', '=', self.id)])
+            rec.course_count = self.env['course.details'].search_count(
+                [('course_class', '=', self.id)])
 
     def action_count_faculty_of_class(self):
-        if self.faculty_count > 1:
+        if self.course_count > 1:
             return{
                 "type": "ir.actions.act_window",
-                "name": ("faculty_class"),
-                "res_model": "faculty.details",
+                "name": ("course_class"),
+                "res_model": "course.details",
                 "view_mode": "tree,form",
-                "domain": [("faculty_class", "=", self.id)],
+                "domain": [("course_class", "=", self.id)],
                 "target": "current",
             }
         else:
             return{
                 "type": "ir.actions.act_window",
-                "name": ("faculty_class"),
-                "res_model": "faculty.details",
+                "name": ("course_class"),
+                "res_model": "course.details",
                 "view_mode": "form",
-                "domain": [("faculty_class", "=", self.id)],
+                "domain": [("course_class", "=", self.id)],
                 "target": "current",
             }
 
@@ -86,7 +86,7 @@ class ClassDetails(models.Model):
         result = []
         for rec in self:
             result.append(
-                (rec.id, "%s - %s" % (rec.room_number, rec.course))
+                (rec.id, "%s - %s" % (rec.room_number, rec.class_name))
             )
         return result
 

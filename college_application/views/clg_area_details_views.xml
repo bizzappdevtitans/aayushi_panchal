@@ -7,11 +7,13 @@
       <field name="arch" type="xml">
         <form >
             <sheet>
-                <h1> Our clg areas</h1>
+                <h1> Our College</h1>
                <group>
-                    <field name="name"/>
-                    <field name="image1" widget="image"/>
+                    <h2>Name :<h5>GLS UNIVERSITY</h5></h2>
                </group>
+                <!-- <div class="class2">
+                    <img src="/college_application/static/img/college.jpg" style="height:45%;width:100%;"/>
+                </div> -->
             </sheet>
         </form>
       </field>
@@ -21,7 +23,6 @@
         <field name="name">clg.area</field>
         <field name="res_model">clg.area</field>
         <field name="view_mode">form</field>
-        <field name="target">inline</field>
     </record>
 
   <!--   <record id="lab_form_view" model="ir.ui.view">

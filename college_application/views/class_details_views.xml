@@ -21,16 +21,16 @@
                 <sheet>
                     <!-- smart button -->
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_count_student_of_class" type="object" class="oe_start_button" icon="fa-users">
+                            <button name="action_count_student_of_class" type="object" class="oe_start_button" icon="fa-users" attrs="{'invisible': [('student_count', '=', 0)]}">
                                 <div class="o_stat_info">
                                     <field name="student_count" class="o_stat_value"/>
                                     <spam class="o_start_test">student count</spam>
                                 </div>
                             </button>
-                            <button name="action_count_faculty_of_class" type="object" class="oe_start_button" icon="fa-user">
+                            <button name="action_count_faculty_of_class" type="object" class="oe_start_button" icon="fa-user" attrs="{'invisible': [('course_count', '=', 0)]}">
                                 <div class="o_stat_info">
-                                    <field name="faculty_count" class="o_stat_value"/>
-                                    <spam class="o_start_test">faculty count</spam>
+                                    <field name="course_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">Course count</spam>
                                 </div>
                             </button>
                         </div>
@@ -52,7 +52,7 @@
     </record>
 
     <record id="action_class_details_menu" model="ir.actions.act_window">
-        <field name="name">class.details.menu</field>
+        <field name="name">Class Details</field>
         <field name="res_model">class.details</field>
         <field name="view_mode">tree,form</field>
     </record>

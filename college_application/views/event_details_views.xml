@@ -38,7 +38,7 @@
 
 
     <record id="event_details_action" model="ir.actions.act_window">
-        <field name="name">event details</field>
+        <field name="name">Event Details</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form,kanban,graph</field>
         <field name="res_model">event.details</field>

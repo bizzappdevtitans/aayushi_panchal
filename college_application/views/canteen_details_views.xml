@@ -20,6 +20,7 @@
        <field name="arch" type="xml">
             <form string="Canteen Information">
             <sheet>
+                <group>
                     <group>
                         <field name="item"/>
                         <field name="price"/>
@@ -31,6 +32,7 @@
                     <group>
                         <field name="image" widget="image"/>
                     </group>
+                </group>
             </sheet>
          </form>
       </field>
@@ -78,7 +80,7 @@
     </record>
 
     <record id="action_canteen" model="ir.actions.act_window">
-        <field name="name">canteen</field>
+        <field name="name">Canteen Menu</field>
         <field name="res_model">canteen.details</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>

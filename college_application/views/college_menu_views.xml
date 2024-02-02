@@ -9,7 +9,12 @@
         name="Student"
         parent="college_menu"/>
 
-     <menuitem
+    <menuitem id="faculty_detail_menu"
+        name="Faculty"
+        action="action_faculty_details"
+        parent="college_menu"/>
+
+    <menuitem
         id="event_menu"
         name="Event"
         action="event_details_action"
@@ -35,11 +40,6 @@
         name="Student Details"
         action="action_student_details"
         parent="student_submenu"/>
-
-    <menuitem id="faculty_detail_menu"
-        name="Faculty"
-        action="action_faculty_details"
-        parent="college_menu"/>
 
     <menuitem id="clg_area_detail_menu"
         name="Areas"

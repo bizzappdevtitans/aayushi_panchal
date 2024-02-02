@@ -44,7 +44,7 @@
     </record>
 
     <record id="action_admission" model="ir.actions.act_window">
-        <field name="name">admission</field>
+        <field name="name">Admission</field>
         <field name="res_model">admission.details</field>
         <field name="view_mode">tree,form</field>
     </record>
