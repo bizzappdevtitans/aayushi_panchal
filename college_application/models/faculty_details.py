@@ -28,6 +28,7 @@ class FacultyDetails(models.Model):
         index=True,
         default=lambda self: _("New"),
     )
+    # allowed_warehouse = fields.Char(string='Allowed Warehouse', config_parameter='allowed_warehouse')
 
     """Returns the unique sequence number whenever new form is created"""
 
@@ -132,3 +133,8 @@ class FacultyDetails(models.Model):
                 "domain": [("faculty_course", "=", self.id)],
                 "target": "current",
             }
+
+    # @api.model
+    # def function(self):
+    #   # custom_value = 10 #add custom value to update
+    #   System_parameters = self.env['ir.config_parameter'].get_param('base.login_cooldown_after')

@@ -209,3 +209,17 @@ class StudentDetails(models.Model):
     #                 "/college_application/static/description/noimage.jpg", "rb"
     #             ) as img:
     #                 record.image = base64.b64encode(img.read())
+
+    # @api.model
+    # def search_read(
+    #     self, model, fields=False, offset=0, limit=False, domain=None, order=None
+    # ):
+    #     domain = [
+    #         "|",
+    #         ("gender","ilike","male"),
+    #         ("gender","ilike", "female"),
+    #     ]
+    #     res = super(StudentDetails, self).search_read(
+    #         domain,fields,offset,limit,order
+    #     )
+    #     return res

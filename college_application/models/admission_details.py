@@ -8,6 +8,12 @@ class Admission(models.Model):
     _rec_name = "full_name"
 
     enrollment_num = fields.Integer(string="Enrollment number", store=True)
+    start_date = fields.Date(
+        size=15, string="From Fillup Date", required=True, default=fields.Date.today()
+    )
+    end_date = fields.Date(
+        size=15, string="Admission End Date", required=True, onchange="date_constrains"
+    )
     full_name = fields.Char(string="Full Name")
     name = fields.Char(string="Name", copy="False")
     lastname = fields.Char(string="Last Name")
@@ -34,6 +40,12 @@ class Admission(models.Model):
         default=lambda self: _("New"),
     )
 
+    def date_constrains(self):
+        for rec in self:
+            if rec.end_date < rec.start_date:
+                raise ValidationError(
+                    _("Sorry, End Date Must be greater Than Start Date...")
+                )
 
     # perform object button
     def action_test(self):
@@ -49,7 +61,7 @@ class Admission(models.Model):
             "unique_full_name_",
             "unique (full_name)",
             "Student name must be unique, this name is already exist.",
-        )
+        ),
     ]
 
     @api.model

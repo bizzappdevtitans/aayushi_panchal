@@ -65,3 +65,13 @@ class CourseDetails(models.Model):
                 "domain": [("student_course", "=", self.id)],
                 "target": "current",
             }
+
+    # @api.model
+    # def search_read(
+    #     self, model, fields=False, offset=0, limit=False, domain=None, order=None
+    # ):
+    #     domain = [("course_name","=","MCA")]
+    #     res = super(CourseDetails, self).search_read(
+    #         domain,fields,offset,limit,order
+    #     )
+    #     return res

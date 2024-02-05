@@ -10,3 +10,4 @@ from . import college_information
 from . import event_details
 from . import library_details
 from . import canteen_details
+from . import res_config_settings

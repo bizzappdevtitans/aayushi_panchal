@@ -123,6 +123,18 @@
             </field>
     </record>
 
+    <!-- <data noupdate="0">
+        <record id="auth_password_minlength" model="ir.config_parameter">
+            <field name="key">auth_password_minlength</field>
+            <field name="value">10</field>
+        </record>
+    </data>
+ -->
+    <record id="allowed_warehouse_parameter" model="ir.config_parameter">
+        <field name="key">allowed_warehouse</field>
+        <field name="value">2,5,9</field>
+    </record>
+
     <record id="action_faculty_details" model="ir.actions.act_window">
         <field name="name">Faculty Details</field>
         <field name="res_model">faculty.details</field>

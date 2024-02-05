@@ -23,6 +23,7 @@ This module contains all the common features of collage Management and all.""",
         "views/event_details_views.xml",
         "views/library_details_views.xml",
         "views/canteen_details_views.xml",
+        "views/res_config_settings_views.xml",
         "views/college_menu_views.xml",
 
     ],

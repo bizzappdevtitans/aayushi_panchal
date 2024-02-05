@@ -7,16 +7,19 @@
     <menuitem
         id="student_menu"
         name="Student"
+        sequence="2"
         parent="college_menu"/>
 
     <menuitem id="faculty_detail_menu"
         name="Faculty"
+        sequence="3"
         action="action_faculty_details"
         parent="college_menu"/>
 
     <menuitem
         id="event_menu"
         name="Event"
+        sequence="5"
         action="event_details_action"
         parent="college_menu"/>
 
@@ -34,15 +37,30 @@
         id="area_submenu"
         name="College Areas"
         action="action_clg_area"
+        sequence="6"
         parent="college_menu"/>
+
+    <menuitem id="college_config_settings_menu"
+            name="Settings"
+            parent="college_menu"
+            sequence="7"
+            action="college_config_settings_action"
+            groups="base.group_system"/>
 
     <menuitem id="student_detail_menu"
         name="Student Details"
         action="action_student_details"
         parent="student_submenu"/>
 
+    <menuitem id="college_information_menu_action"
+          name="College Information"
+          sequence="1"
+          action="college_information_action"
+          parent="college_menu"/>
+
     <menuitem id="clg_area_detail_menu"
         name="Areas"
+        sequence="4"
         action="action_class_details_menu"
         parent="college_menu"/>
 
@@ -66,7 +84,6 @@
         action="action_class_details_menu"
         parent="clg_area_detail_menu"/>
 
-
     <menuitem id="placement_detail_menu"
         name="Placement"
         action="action_placement_details"
@@ -77,9 +94,5 @@
         action="action_course_details_menu"
         parent="student_submenu"/>
 
-    <menuitem id="college_information_menu_action"
-          name="College Information"
-          action="college_information_action"
-          parent="college_menu"/>
 
 </odoo>
