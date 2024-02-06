@@ -19,9 +19,6 @@ class ClgArea(models.Model):
 #     lab_date = fields.Datetime("Sport_date_time")
 
 
-
-
-
 # class Sports(models.Model):
 #     _name = "sports"
 #     _description = "sports"

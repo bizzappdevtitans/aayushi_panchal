@@ -133,7 +133,3 @@ class FacultyDetails(models.Model):
                 "target": "current",
             }
 
-    # @api.model
-    # def function(self):
-    #   # custom_value = 10 #add custom value to update
-    #   System_parameters = self.env['ir.config_parameter'].get_param('base.login_cooldown_after')
