@@ -1,0 +1,33 @@
+{
+    "name": "College application",
+    "summary": "This is for collage application",
+    "author": "bizzappdev",
+    "website": "https://bizzappdev.com",
+    "category": "uncategorized",
+    "version": "15.0.1.0.0",
+    "description": """
+This module contains all the common features of collage Management and all.""",
+    "depends": ["base"],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/ir_sequence_data.xml",
+        "views/student_details_views.xml",
+        "views/student_data_details_views.xml",
+        "views/faculty_details_views.xml",
+        "views/clg_area_details_views.xml",
+        "views/placement_details_views.xml",
+        "views/course_details_views.xml",
+        "views/class_details_views.xml",
+        "views/college_information_views.xml",
+        "views/admission_details_views.xml",
+        "views/event_details_views.xml",
+        "views/library_details_views.xml",
+        "views/canteen_details_views.xml",
+        "views/res_config_settings_views.xml",
+        "views/college_menu_views.xml",
+
+    ],
+    "demo": [],
+    "installable": True,
+    "license": "LGPL-3",
+}

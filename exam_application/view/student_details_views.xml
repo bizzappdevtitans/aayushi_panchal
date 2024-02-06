@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<odoo>
+
+<!-- TREE VIEW  -->
+
+ <record id="view_student_details_tree" model="ir.ui.view">
+            <field name="name">student.details.tree</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <tree multi_edit="1">
+                    <field name="name"/>
+                    <field name="gender" widget="radio"/>
+                    <field name="date_of_birth" widget="date"/>
+                    <field name="age" widget="integer"/>
+                    <field name="marital"/>
+                    <field name="mobile_no" widget="phone"/>
+                    <field name="address"/>
+                    <field name="email"/>
+                    <field name="ref"/>
+                    <field name="document"/>
+                    <field name="isbn" widget="popover_widget"/>
+                    <field name="linkdin_id" widget="url"/>
+                    <field name="teacher"/>
+                    <field name="examtype"/>
+                    <field name="exam_date" widget="remaining_days"/>
+                    <field name="exam_description" widget="html_frame" placeholder="enter a exam description"/>
+                    <field name="subjects" widget="many2many_tags"/>
+                    <field name="marks" widget="percentpie"/>
+                    <field name="clg_fees" widget="monetary"/>
+                    <field name="result" widget="progressbar"/>
+                    <field name="active" widget="boolean_toggle"/>
+                    <field name="color" widget="color"/>
+                    <field name="color_2" widget="color_picker"/>
+                    <field name="state"
+                        decoration-success="state == 'draft'"
+                        decoration-warning="state == 'in_progress'"
+                        decoration-info="state == 'cancel'"
+                        decoration-danger="state == 'done'"  widget="badge"/>
+            </tree>
+            </field>
+        </record>
+
+<!-- FORM VIEW-->
+
+ <record id="view_student_details_form" model="ir.ui.view">
+            <field name="name">student.details.from</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                            <button name="action_in_draft" string="In Draft" type="object" states="cancel" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                            <button name="action_in_progress" string="In Progress" type="object" class="oe_highlight"/>
+                            <button name="action_in_cancel" string="In Cancel" type="object" class="oe_highlight"/>
+                            <button name="action_in_complete" string="In Complete" type="object" states="in_progress" class="oe_highlight"/>
+                            <button name="action_in_done" string="In Done" type="object" states="complete" class="oe_highlight"/>
+
+
+                    </header>
+                    <sheet>
+                        <!-- smart button -->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_subject_details" type="object" class="oe_start_button" icon="fa-book">
+                                <div class="o_stat_info">
+                                    <field name="subject_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">subject count</spam>
+                                </div>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar" options='{"zoom": true}'/>
+                        <div>
+                            <h2>
+                                <field name="priority" widget="priority"/>
+                            </h2>
+                            <button name="action_test" string="Object" type="object" class="oe_highlight" help="click button then just print the"/>
+                            <button name="%(exam_application.action_subject_details_menu)d" string="Action" type="action" class="oe_highlight" help="redirect to the subject menu details page"/>
+                        </div>
+                            <group>
+                                <h1 class="d-flex">
+                                    <field name="name" placeholder="Student's Name" required="True" default_focus="1"/>
+                                </h1>
+
+                                <group>
+                                    <field name="name" placeholder="Student's Name" required="True" default_focus="1"/>
+                                    <field name="isbn" widget="popover_widget"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </group>
+                                <group>
+                                    <field name="color" widget="color"/>
+                                    <field name="color_2" widget="color_picker"/>
+                                </group>
+
+                                <notebook>
+
+                                    <page name="public" string="Personal Information">
+                                        <group>
+                                            <field name="age"/>
+                                            <field name="gender"/>
+                                            <field name="date_of_birth"/>
+                                            <field name="marital"/>
+                                            <field name="document"/>
+                                            <field name="mobile_no" widget="phone"/>
+                                            <field name="email"/>
+                                            <field name="address"  widget="text"/>
+                                        </group>
+                                    </page>
+
+                                    <page name="public" string="Study Information">
+                                        <group>
+                                            <field name="teacher"/>
+                                            <field name="linkdin_id" widget="url"/>
+                                            <field name="ref"/>
+                                            <field name="examtype"/>
+                                            <field name="exam_date"/>
+                                            <field name="clg_fees" widget="monetary"/>
+                                            <field name="marks"/>
+                                            <field name="result"/>
+                                        </group>
+                                    </page>
+
+                                    <page string="Subject">
+                                        <field name="subjects" widget="many2many_tags"/>
+                                        <field name="exam_description"
+                                            options="{'collaborative':true,
+                                            'resizable':true,
+                                            'codeview':true}"/>
+                                    </page>
+                                </notebook>
+
+                            </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                        <field name="activity_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+<!-- SEARCH VIEW-->
+
+    <record id="view_student_details_search" model="ir.ui.view">
+        <field name="model">student.details</field>
+        <field name="arch" type="xml">
+        <search>
+
+            <field name="name" />
+            <field name="age"/>
+            <field name="gender"/>
+            <field name="teacher"/>
+            <field name="date_of_birth" />
+            <field name="marital"/>
+            <field name="mobile_no"/>
+            <field name="email"/>
+            <field name="document"/>
+            <field name="examtype"/>
+            <field name="isbn" />
+            <field name="result" />
+            <field name="exam_date"/>
+            <field name="exam_description"/>
+            <field name="address"/>
+            <field name="marks"/>
+            <field name="active"/>
+            <field name="image" widget="image" />
+            <!-- add default filter -->
+            <filter name="filter_male"
+                    string="Male"
+                    domain="[('gender','=','male')]"/>
+            <!-- use the separator for the perfrom and operation ,when we not use septatoe that perfrom or operation that providing the total of that filed -->
+            <separator/>
+            <filter name="filter_female"
+                    string="Female"
+                    domain="[('gender','=','female')]"/>
+            <filter name="filter_examtype"
+                    string="examtype"
+                    domain="[('examtype','=','ielts')]"/>
+         <!--    <filter name="filter_not_adults"
+                    string="Not adults"
+                    domain="[('age','&lt;=','18')]"/> -->
+
+            <filter name="group_by_marital_status"
+                    string="By Marital status"
+                    context="{'group_by': 'marital'}"/>
+        </search>
+        </field>
+    </record>
+
+
+    <record id="action_student_details" model="ir.actions.act_window">
+        <field name="name">student.details</field>
+        <field name="res_model">student.details</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+
+    </record>
+
+  <record id="student_kanban_view" model="ir.ui.view">
+            <field name="name">student.details.kanban</field>
+            <field name="model">student.details</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="date_of_birth" />
+                    <field name="mobile_no"/>
+                    <field name="image" widget="image"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                           Name : <field name="name"/>
+                                        </li>
+                                        <li>
+                                            Gender : <field name="gender"/>
+                                        </li>
+                                        <li>
+                                            Email : <field name="email" class="o_text_overflow" widget="email"/>
+                                        </li>
+                                        <li>
+                                            Age : <field name="age"/>
+                                        </li>
+                                        <li>
+                                            Contact No : <field name="mobile_no" class="o_force_ltr"/>
+                                        </li>
+                                        <li>
+                                             Photo: <field name="image" widget="image" class="o_kanban_image_fill_right" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+    <data>
+        <record id="student_sequence" model="ir.sequence">
+            <field name="name">Student Sequence</field>
+            <field name="code">student</field>
+            <field name="prefix">MP</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+</odoo>
+
+
+
+

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+exam_application.access_student_details,access_student_details,exam_application.model_student_details,base.group_user,1,1,1,1
+exam_application.access_teacher_details,access_teacher_details,exam_application.model_teacher_details,base.group_user,1,1,1,1
+exam_application.access_student_subject_details,access_student_subject_details,exam_application.model_student_subject_details,base.group_user,1,1,1,1
+exam_application.access_cancel_student_wizard,access_cancel_student_wizard,exam_application.model_cancel_student_wizard,base.group_user,1,1,1,1
