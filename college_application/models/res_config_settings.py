@@ -4,9 +4,9 @@ from odoo import fields, models, api
 class ResConfigSettings(models.TransientModel):
     _inherit = ["res.config.settings"]
 
-    cancel_admission = fields.Integer(
-        string="Show Cancel Admission",
-        config_parameter="college_application.cancel_admission",
+    admission_end_date = fields.Datetime(
+        string="Admisiion End Date",
+        config_parameter="college_application.admission_end_date",
     )
 
     # @api.model

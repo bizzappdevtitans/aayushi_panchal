@@ -28,7 +28,6 @@ class FacultyDetails(models.Model):
         index=True,
         default=lambda self: _("New"),
     )
-    # allowed_warehouse = fields.Char(string='Allowed Warehouse', config_parameter='allowed_warehouse')
 
     """Returns the unique sequence number whenever new form is created"""
 

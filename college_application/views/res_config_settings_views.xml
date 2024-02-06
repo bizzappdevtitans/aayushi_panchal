@@ -14,9 +14,9 @@
                             <div class="col-12 col-lg-6 o_setting_box">
                                 <div class="o_setting_left_pane"/>
                                 <div class="o_setting_right_pane">
-                                    <span class="o_form_label">Cancellation Befor</span>
+                                    <span class="o_form_label">Admission Last Date</span>
                                     <div class="text-muted content-group mt16">
-                                        <field name="cancel_admission" class="text-center oe_inline" />
+                                        <field name="admission_end_date" class="text-center oe_inline" widget="remaining_days"/>
                                         <span> days </span>
                                     </div>
                                 </div>
