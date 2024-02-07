@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="admission_list_view" model="ir.ui.view">
+      <field name="name">admission.details.tree</field>
+      <field name="model">admission.details</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="admisiion_no" />
+            <field name="enrollment_num" />
+            <field name="name" />
+            <field name="lastname" />
+            <field name="contact_no" />
+            <field name="course_name" />
+            <field name="pr_result" widget="percentpie" />
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="admission_form_view" model="ir.ui.view">
+        <field name="name">admission.details.form</field>
+        <field name="model">admission.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Student Admission Open"
+                        bg_color="bg-success"
+                    />
+
+                    <button
+                        name="%(college_application.college_information_action)d"
+                        string="College Info"
+                        type="action"
+                        class="oe_highlight"
+                        help="redirect to the collage infomation page"
+                    />
+                    <group>
+                       <field name="admisiion_no" />
+                       <field name="enrollment_num" />
+                       <field name="start_date" />
+                       <field name="full_name" placeholder="Enter your full name" />
+                       <field name="name" placeholder="Enter your name" />
+                       <field name="lastname" placeholder="Enter your lastname" />
+                       <field name="gender" />
+                       <field name="date_of_birth" widget="date" />
+                       <field name="contact_no" placeholder="Enter your contact no" />
+                       <field name="course_name" placeholder="Select your course" />
+                       <field
+                            name="pr_result"
+                            placeholder="Enter yout pr% previous course/std"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_admission" model="ir.actions.act_window">
+        <field name="name">Admission</field>
+        <field name="res_model">admission.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

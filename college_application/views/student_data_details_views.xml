@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+<!-- TREE VIEW  -->
+
+ <record id="view_student_data_details_tree" model="ir.ui.view">
+            <field name="name">student.data.details.tree</field>
+            <field name="model">student.data.details</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="enrollment_number" />
+                    <field name="first_name" />
+                    <field name="last_name" />
+                    <field name="gender" widget="radio" />
+                    <!-- <field name="date_of_birth" widget="date"/> -->
+                    <field name="age" widget="integer" />
+                    <field name="marital" />
+                    <field name="mobile_no" widget="phone" />
+                    <field name="address" />
+                    <field name="email" />
+                    <!-- <field name="ref"/> -->
+                    <!-- <field name="isbn" widget="popover_widget"/> -->
+                    <field name="linkdin_id" widget="url" />
+                    <!-- <field name="student_course"/> -->
+                    <field name="examtype" />
+                    <field name="exam_date" widget="remaining_days" />
+                    <field name="marks" widget="percentpie" />
+                    <!-- <field name="clg_fees" widget="monetary"/> -->
+                    <field name="result" widget="progressbar" />
+                    <field name="active" widget="boolean_toggle" />
+                    <field name="color" widget="color" />
+                    <field name="color_2" widget="color_picker" />
+                    <!-- <field name="state"
+                        decoration-success="state == 'draft'"
+                        decoration-warning="state == 'in_progress'"
+                        decoration-info="state == 'cancel'"
+                        decoration-danger="state == 'done'"  widget="badge"/> -->
+                </tree>
+            </field>
+        </record>
+
+<!-- FORM VIEW-->
+
+ <record id="view_student_data_details_form" model="ir.ui.view">
+            <field name="name">student.data.details.from</field>
+            <field name="model">student.data.details</field>
+            <field name="arch" type="xml">
+                <form>
+                    <!-- <header>
+                            <button name="action_in_draft" string="In Draft" type="object" states="cancel" class="oe_highlight"/>
+                            <field name="state" widget="statusbar"/>
+                            <button name="action_in_progress" string="In Progress" type="object" class="oe_highlight"/>
+                            <button name="action_in_cancel" string="In Cancel" type="object" class="oe_highlight"/>
+                            <button name="action_in_complete" string="In Complete" type="object" states="in_progress" class="oe_highlight"/>
+                            <button name="action_in_done" string="In Done" type="object" states="complete" class="oe_highlight"/>
+
+
+                    </header> -->
+                    <sheet>
+                        <!-- smart button -->
+                        <!-- <div class="oe_button_box" name="button_box">
+                            <button name="action_open_course_details" type="object" class="oe_start_button" icon="fa-book">
+                                <div class="o_stat_info">
+                                    <field name="course_count" class="o_stat_value"/>
+                                    <spam class="o_start_test">Course count</spam>
+                                </div>
+                            </button>
+                        </div> -->
+                        <field
+                        name="image"
+                        widget="image"
+                        class="oe_avatar"
+                        options='{"zoom": true}'
+                    />
+
+                            <group>
+                                <h3 class="d-flex">
+                                    <field
+                                name="full_name"
+                                placeholder="Student's FullName"
+                                required="True"
+                            />
+                                </h3>
+
+                                <group>
+                                    <field name="enrollment_number" />
+                                    <field
+                                name="first_name"
+                                placeholder="Student's First Name"
+                            />
+                                    <field
+                                name="last_name"
+                                placeholder="Student's Last Name"
+                            />
+                                    <field name="isbn" widget="popover_widget" />
+                                </group>
+                                <group>
+                                    <field name="active" widget="boolean_toggle" />
+                                    <field name="color" widget="color" />
+                                    <field name="color_2" widget="color_picker" />
+                                </group>
+
+                                <notebook>
+
+                                    <page name="public" string="Personal Information">
+                                        <group>
+
+                                            <field
+                                        name="full_name"
+                                        placeholder="Student's Full Name"
+                                    />
+                                            <field name="age" />
+                                            <field
+                                        name="gender"
+                                        placeholder="Select your gender"
+                                    />
+                                            <field
+                                        name="date_of_birth"
+                                        placeholder="Enter your birth date"
+                                    />
+                                            <field
+                                        name="marital"
+                                        placeholder="Select your marital status"
+                                    />
+                                            <field
+                                        name="document"
+                                        placeholder="Select your faculty name"
+                                    />
+                                            <field
+                                        name="mobile_no"
+                                        widget="phone"
+                                        placeholder="Enter your 10 digit number"
+                                    />
+                                            <field
+                                        name="email"
+                                        placeholder="Enter your email"
+                                    />
+                                            <field
+                                        name="address"
+                                        widget="text"
+                                        placeholder="Enter your permanent address"
+                                    />
+                                        </group>
+                                    </page>
+
+                                    <page name="public" string="Study Information">
+                                        <group>
+                                            <!-- <field name="faculty"/> -->
+                                            <!-- <field name="student_course" placeholder="Select your course"/> -->
+                                            <!-- <field name="name_ids"/> -->
+                                            <field name="linkdin_id" widget="url" />
+                                            <field name="ref" />
+                                            <field name="clg_fees" widget="monetary" />
+                                            <field
+                                        name="examtype"
+                                        placeholder="Select your examtype"
+                                    />
+                                            <field
+                                        name="exam_date"
+                                        placeholder="Enter your exam date"
+                                    />
+                                            <field
+                                        name="exam_description"
+                                        widget="html_frame"
+                                        placeholder="Enter a exam description"
+                                    />
+                                            <field
+                                        name="marks"
+                                        placeholder="Enter your average marks"
+                                    />
+                                            <field
+                                        name="result"
+                                        placeholder="Enter your last year or sem result"
+                                    />
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+    <record id="action_student_data_details" model="ir.actions.act_window">
+        <field name="name">student.data.detail.tree.view</field>
+        <field name="res_model">student.data.details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+
+    </record>
+
+</odoo>

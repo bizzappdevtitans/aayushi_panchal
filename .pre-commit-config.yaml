@@ -36,22 +36,26 @@ repos:
         entry: found a en.po file
         language: fail
         files: '[a-zA-Z0-9_]*/i18n/en\.po$'
+  - repo: https://github.com/sbidoul/whool
+    rev: v0.5
+    hooks:
+      - id: whool-init
   - repo: https://github.com/oca/maintainer-tools
     rev: 9a170331575a265c092ee6b24b845ec508e8ef75
     hooks:
       # update the NOT INSTALLABLE ADDONS section above
       - id: oca-update-pre-commit-excluded-addons
       - id: oca-fix-manifest-website
-        args: ["https://github.com/OCA/"]
+        args: ["https://github.com/Bizzappdev/"]
       - id: oca-gen-addon-readme
         args:
           - --addons-dir=.
           - --branch=15.0
-          - --org-name=OCA
+          - --org-name=Bizzappdev
           - --repo-name=
           - --if-source-changed
           - --keep-source-digest
-          - --convert-fragments-to-markdown
+      - id: oca-gen-external-dependencies
   - repo: https://github.com/OCA/odoo-pre-commit-hooks
     rev: v0.0.25
     hooks:
@@ -126,16 +130,6 @@ repos:
         args:
           - --settings=.
         exclude: /__init__\.py$
-  - repo: https://github.com/acsone/setuptools-odoo
-    rev: 3.1.8
-    hooks:
-      - id: setuptools-odoo-make-default
-      - id: setuptools-odoo-get-requirements
-        args:
-          - --output
-          - requirements.txt
-          - --header
-          - "# generated from manifests external_dependencies"
   - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
     hooks:
